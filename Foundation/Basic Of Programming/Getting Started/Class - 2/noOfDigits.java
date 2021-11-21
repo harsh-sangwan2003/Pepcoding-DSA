@@ -21,5 +21,6 @@ public class noOfDigits {
         int num = scn.nextInt();
 
         System.out.println(countNoOfDigits(num));
+        scn.close();
     }
 }

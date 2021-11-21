@@ -32,5 +32,7 @@ public class isNumberPrime {
                 System.out.println("not prime");
             }
         }
+
+        scn.close();
     }
 }

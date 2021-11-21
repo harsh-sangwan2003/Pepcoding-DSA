@@ -2,54 +2,28 @@ import java.util.Scanner;
 
 public class functions {
 
-    public static Scanner scn = new Scanner(System.in);
+    static Scanner scn = new Scanner(System.in);
 
-    // No return type & no arguments
+    // No return type with no arguments
     public static void printMessage() {
 
-        System.out.println("Hello class!");
+        System.out.println("Hello class!!!");
     }
 
-    public static void printPrime() {
+    public static void sumOfTwoNumbers() {
 
-        for (int n = 2; n <= 10; n++) {
+        int a = scn.nextInt();
+        int b = scn.nextInt();
 
-            boolean isPrime = true;
-
-            for (int i = 2; i * i <= n; i++) {
-
-                if (n % i == 0) {
-
-                    isPrime = false;
-                    break;
-                }
-            }
-
-            if (isPrime) {
-
-                System.out.println(n);
-            }
-        }
-    }
-
-    public static void naturalNoSum() {
-
-        int sum = 0;
-
-        for (int i = 1; i <= 50; i++) {
-
-            sum += i;
-        }
-
-        System.out.println(sum);
+        System.out.println(a + b);
     }
 
     // No return type with arguments
     public static void printTable(int num) {
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
 
-            System.out.println(num + "X" + i + "=" + (num * i));
+            System.out.println(num + "X" + i + "=" + num * i);
         }
     }
 
@@ -58,57 +32,50 @@ public class functions {
         for (int i = a; i <= b; i++) {
 
             printTable(i);
-            System.out.println("-----");
+            System.out.println("-------------");
         }
     }
 
-    public static void printName(String firstName, String lastName) {
+    public static void printNumbers(int num) {
 
-        System.out.println(firstName + lastName);
-    }
+        for (int i = 1; i <= num; i++) {
 
-    public static void square(int n) {
-
-        System.out.println(n * n);
+            System.out.println(num);
+        }
     }
 
     // Return type with no arguments
-    public static int sumOfTwoNumber() {
-
-        int a = scn.nextInt();
-        int b = scn.nextInt();
-
-        return (a + b);
-    }
-
     public static int maxOfTwo() {
 
         int a = scn.nextInt();
         int b = scn.nextInt();
 
-        return (Math.max(a, b));
+        return Math.max(a, b);
     }
 
-    public static int reverse() {
+    // Return type with arguments
+    public static boolean isPrime(int num) {
 
-        int num = scn.nextInt();
-        int res = 0;
+        for (int i = 2; i * i <= num; i++) {
 
-        while (num != 0) {
-
-            int ld = num % 10;
-            num /= 10;
-            res = res * 10 + ld;
+            if (num % i == 0)
+                return false;
         }
 
-        return res;
+        return true;
     }
 
     public static void main(String[] args) {
 
-        int ans = sumOfTwoNumber();
-        System.out.println(ans);
+        printMessage();
+        sumOfTwoNumbers();
 
-        System.out.println(reverse());
+        int a = scn.nextInt(), b = scn.nextInt();
+        printTableInRange(a, b);
+
+        maxOfTwo();
+
+        System.out.println(isPrime(scn.nextInt()));
+        scn.close();
     }
 }

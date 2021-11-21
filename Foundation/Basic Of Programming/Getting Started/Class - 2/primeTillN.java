@@ -32,5 +32,6 @@ public class primeTillN {
         int lo = scn.nextInt(), hi = scn.nextInt();
 
         printTillN(lo, hi);
+        scn.close();
     }
 }
