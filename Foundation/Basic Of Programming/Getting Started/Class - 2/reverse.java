@@ -18,5 +18,7 @@ public class reverse {
         int num = scn.nextInt();
 
         reverseOfNumber(num);
+
+        scn.close();
     }
 }
