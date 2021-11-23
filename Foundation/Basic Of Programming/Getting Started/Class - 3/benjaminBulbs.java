@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class benjaminBulbs {
 
-    public static void benjaminBulbs(int n) {
+    public static void benjaminBulb(int n) {
 
         for (int i = 1; i * i <= n; i++) {
 
@@ -15,7 +15,7 @@ public class benjaminBulbs {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        benjaminBulbs(n);
+        benjaminBulb(n);
 
         scn.close();
     }
