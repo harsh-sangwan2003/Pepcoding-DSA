@@ -6,7 +6,6 @@ public class extra {
 
         int nsp = n / 2;
         int nst = 1;
-        int num = 1;
 
         for (int r = 1; r <= n; r++) {
 
@@ -15,9 +14,11 @@ public class extra {
                 System.out.print("\t");
             }
 
+            int count = (r <= n / 2) ? r : n - r + 1;
+
             for (int cst = 1; cst <= nst; cst++) {
 
-                System.out.print(num + "\t");
+                System.out.print(count + "\t");
             }
 
             System.out.println();
@@ -25,14 +26,12 @@ public class extra {
 
                 nsp--;
                 nst += 2;
-                num++;
             }
 
             else {
 
                 nsp++;
                 nst -= 2;
-                num--;
             }
         }
     }
