@@ -38,5 +38,6 @@ public class pattern_13 {
         int n = scn.nextInt();
 
         pattern(n);
+        scn.close();
     }
 }
