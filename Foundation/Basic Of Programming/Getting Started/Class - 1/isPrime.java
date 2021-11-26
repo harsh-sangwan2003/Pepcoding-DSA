@@ -5,26 +5,31 @@ public class isPrime {
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
-        boolean isPrime = true;
+        int t = scn.nextInt();
 
-        for (int num = 2; num < n; num++) {
+        for (int i = 1; i <= t; i++) {
 
-            if (n % num == 0) {
+            int num = scn.nextInt();
+            boolean isPrime = true;
 
-                isPrime = false;
-                break;
+            for (int n = 2; n < num; n++) {
+
+                if (num % n == 0) {
+
+                    isPrime = false;
+                    break;
+                }
             }
-        }
 
-        if (isPrime) {
+            if (isPrime) {
 
-            System.out.println(n + " is a prime no.");
-        }
+                System.out.println("prime");
+            }
 
-        else {
+            else {
 
-            System.out.println(n + "  is not a prime no.");
+                System.out.println("not prime");
+            }
         }
 
         scn.close();

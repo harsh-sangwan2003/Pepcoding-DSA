@@ -1,4 +1,4 @@
-public class printSlashn {
+public class printSlashN {
 
     public static void main(String[] args) {
 

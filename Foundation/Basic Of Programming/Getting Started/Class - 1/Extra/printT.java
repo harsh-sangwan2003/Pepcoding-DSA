@@ -6,5 +6,7 @@ public class printT {
         System.out.println("    *    ");
         System.out.println("    *    ");
         System.out.println("    *    ");
+        System.out.println("    *    ");
+
     }
 }

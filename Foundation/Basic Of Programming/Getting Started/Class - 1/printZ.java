@@ -1,12 +1,11 @@
 public class printZ {
 
-  public static void main(String[] args) {
-    // Write your code here
+    public static void main(String[] args) {
 
-    System.out.println("*****");
-    System.out.println("   *");
-    System.out.println("  *");
-    System.out.println(" *");
-    System.out.println("*****");
-  }
+        System.out.println("*****");
+        System.out.println("   *");
+        System.out.println("  *");
+        System.out.println(" *");
+        System.out.println("*****");
+    }
 }
