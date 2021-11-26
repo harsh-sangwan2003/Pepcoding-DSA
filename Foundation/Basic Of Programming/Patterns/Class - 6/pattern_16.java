@@ -4,8 +4,7 @@ public class pattern_16 {
 
     public static void pattern(int n) {
 
-        int nst = 1;
-        int nsp = 2 * n - 3;
+        int nst = 1, nsp = 2 * n - 3;
 
         for (int r = 1; r <= n; r++) {
 
@@ -15,6 +14,7 @@ public class pattern_16 {
 
                 System.out.print(num + "\t");
                 num++;
+
             }
 
             for (int csp = 1; csp <= nsp; csp++) {
@@ -34,12 +34,13 @@ public class pattern_16 {
 
                 System.out.print(num + "\t");
                 num--;
+
             }
+
+            System.out.println();
 
             nst++;
             nsp -= 2;
-
-            System.out.println();
         }
     }
 
@@ -49,6 +50,7 @@ public class pattern_16 {
         int n = scn.nextInt();
 
         pattern(n);
+
         scn.close();
     }
 }

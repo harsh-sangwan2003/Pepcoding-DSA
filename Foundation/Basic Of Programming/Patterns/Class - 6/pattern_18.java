@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class pattern_15 {
+public class pattern_18 {
 
     public static void pattern(int n) {
 
-        int nst = 1, nsp = n / 2;
+        int nsp = 0, nst = n;
 
         for (int r = 1; r <= n; r++) {
 
@@ -13,31 +13,27 @@ public class pattern_15 {
                 System.out.print("\t");
             }
 
-            int num = (r > n / 2 + 1) ? n - r + 1 : r;
-
             for (int cst = 1; cst <= nst; cst++) {
 
-                System.out.print(num + "\t");
-
-                if (cst <= nst / 2)
-                    num++;
+                if ((r > 1 && r <= n / 2) && (cst > 1 && cst < nst))
+                    System.out.print("\t");
 
                 else
-                    num--;
+                    System.out.print("*\t");
             }
 
             System.out.println();
 
             if (r <= n / 2) {
 
-                nst += 2;
-                nsp--;
+                nst -= 2;
+                nsp++;
             }
 
             else {
 
-                nst -= 2;
-                nsp++;
+                nst += 2;
+                nsp--;
             }
         }
     }
@@ -48,7 +44,7 @@ public class pattern_15 {
         int n = scn.nextInt();
 
         pattern(n);
-
         scn.close();
+
     }
 }

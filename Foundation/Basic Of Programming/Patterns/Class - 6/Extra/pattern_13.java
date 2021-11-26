@@ -1,16 +1,8 @@
+package Extra;
+
 import java.util.Scanner;
 
 public class pattern_13 {
-
-    public static int fact(int num) {
-
-        int res = 1;
-
-        for (int i = num; i > 1; i--)
-            res *= i;
-
-        return res;
-    }
 
     public static void pattern(int num) {
 
@@ -18,10 +10,15 @@ public class pattern_13 {
 
         for (int n = 0; n < num; n++) {
 
+            int val = 1;
+
             for (int r = 0; r < nst; r++) {
 
-                int ans = fact(n) / (fact(n - r) * fact(r));
-                System.out.print(ans + "\t");
+                if (r > 0) {
+                    val = ((n - r + 1) * val) / r;
+                }
+
+                System.out.print(val + "\t");
             }
 
             System.out.println();

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class pattern_14 {
 
-    public static void printTable(int n) {
+    public static void pattern(int n) {
 
         for (int i = 1; i <= 10; i++) {
 
@@ -15,7 +15,8 @@ public class pattern_14 {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        printTable(n);
+        pattern(n);
+
         scn.close();
     }
 }

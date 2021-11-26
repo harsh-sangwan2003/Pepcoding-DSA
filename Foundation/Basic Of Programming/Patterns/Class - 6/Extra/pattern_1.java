@@ -1,11 +1,12 @@
+package Extra;
+
 import java.util.Scanner;
 
-public class extra {
+public class pattern_1 {
 
-    public static void pattern1(int n) {
+    public static void pattern(int n) {
 
-        int nsp = n / 2;
-        int nst = 1;
+        int nst = 1, nsp = n / 2;
 
         for (int r = 1; r <= n; r++) {
 
@@ -14,35 +15,31 @@ public class extra {
                 System.out.print("\t");
             }
 
-            int num = r > n / 2 + 1 ? n - r + 1 : r;
+            int num = (r > n / 2 + 1) ? n - r + 1 : r;
 
             for (int cst = 1; cst <= nst; cst++) {
 
                 System.out.print(num + "\t");
 
-                if (cst <= nst / 2) {
-
+                if (cst <= nst / 2)
                     num--;
-                }
 
-                else {
-
+                else
                     num++;
-                }
             }
 
             System.out.println();
 
             if (r <= n / 2) {
 
-                nsp--;
                 nst += 2;
+                nsp--;
             }
 
             else {
 
-                nsp++;
                 nst -= 2;
+                nsp++;
             }
         }
     }
@@ -52,7 +49,8 @@ public class extra {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        pattern1(n);
+        pattern(n);
+
         scn.close();
     }
 }
