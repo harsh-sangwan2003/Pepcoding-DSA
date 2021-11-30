@@ -47,5 +47,6 @@ public class pattern_6 {
         pattern(n);
 
         scn.close();
+
     }
 }

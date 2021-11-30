@@ -4,8 +4,7 @@ public class pattern_10 {
 
     public static void pattern(int n) {
 
-        int nsp1 = n / 2;
-        int nsp2 = -1;
+        int nsp1 = n / 2, nsp2 = -1;
 
         for (int r = 1; r <= n; r++) {
 
@@ -21,10 +20,10 @@ public class pattern_10 {
                 System.out.print("\t");
             }
 
-            if (r != 1 && r != n)
-                System.out.print("*\t");
+            if (r != 1 && r != n) {
 
-            System.out.println();
+                System.out.print("*\t");
+            }
 
             if (r <= n / 2) {
 
@@ -37,6 +36,8 @@ public class pattern_10 {
                 nsp1++;
                 nsp2 -= 2;
             }
+
+            System.out.println();
         }
     }
 
@@ -46,6 +47,7 @@ public class pattern_10 {
         int n = scn.nextInt();
 
         pattern(n);
+
         scn.close();
     }
 }

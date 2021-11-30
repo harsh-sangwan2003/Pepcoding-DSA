@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class rotateNumber {
 
@@ -8,36 +8,38 @@ public class rotateNumber {
 
         while (num != 0) {
 
-            num /= 10;
             count++;
+            num /= 10;
         }
 
         return count;
     }
 
+    public static int pow(int n) {
+
+        int res = 1;
+
+        for (int i = 1; i <= n; i++)
+            res *= 10;
+
+        return res;
+    }
+
     public static int rotate(int num, int k) {
 
-        int nod = countDigits(num);
+        int len = countDigits(num);
 
-        k = (k % nod + nod) % nod;
+        k = (k % len + len) % len;
 
-        int div = 1, mul = 1;
-
-        for (int i = 1; i <= nod; i++) {
-
-            if (i <= k)
-                div *= 10;
-
-            else
-                mul *= 10;
-        }
+        int div = pow(k);
+        int mul = pow(len - k);
 
         int a = num % div;
         int b = num / div;
 
-        int res = (a * mul) + b;
+        int ans = a * mul + b;
 
-        return res;
+        return ans;
     }
 
     public static void main(String[] args) {
@@ -47,7 +49,6 @@ public class rotateNumber {
         int k = scn.nextInt();
 
         System.out.println(rotate(num, k));
-
         scn.close();
     }
 }

@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class noOfDigits {
 
-    public static int countNoOfDigits(int num) {
+    public static int countDigits(int n) {
 
         int count = 0;
 
-        while (num != 0) {
+        while (n != 0) {
 
-            num /= 10;
+            n /= 10;
             count++;
         }
 
@@ -18,9 +18,8 @@ public class noOfDigits {
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
-        int num = scn.nextInt();
+        int n = scn.nextInt();
 
-        System.out.println(countNoOfDigits(num));
-        scn.close();
+        System.out.println(countDigits(n));
     }
 }

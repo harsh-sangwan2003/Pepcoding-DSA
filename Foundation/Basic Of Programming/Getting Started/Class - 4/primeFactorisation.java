@@ -1,22 +1,20 @@
 import java.util.Scanner;
 
-public class primeFactorization {
+public class primeFactorisation {
 
     public static void primeFactors(int num) {
 
-        for (int n = 2; n * n <= num; n++) {
+        for (int i = 2; i * i <= num; i++) {
 
-            while (num % n == 0) {
+            while (num % i == 0) {
 
-                System.out.print(n + " ");
-                num /= n;
+                System.out.print(i + " ");
+                num /= i;
             }
         }
 
-        if (num != 1) {
-
+        if (num != 1)
             System.out.println(num);
-        }
     }
 
     public static void main(String[] args) {
@@ -25,7 +23,6 @@ public class primeFactorization {
         int num = scn.nextInt();
 
         primeFactors(num);
-
         scn.close();
     }
 }

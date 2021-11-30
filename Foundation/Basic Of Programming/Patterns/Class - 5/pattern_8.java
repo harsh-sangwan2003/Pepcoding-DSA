@@ -4,22 +4,17 @@ public class pattern_8 {
 
     public static void pattern(int n) {
 
+        int nsp = n - 1;
+
         for (int r = 1; r <= n; r++) {
 
-            for (int c = 1; c <= n; c++) {
+            for (int csp = 1; csp <= nsp; csp++) {
 
-                if (r + c == n + 1) {
-
-                    System.out.print("*\t");
-                }
-
-                else {
-
-                    System.out.print("\t");
-                }
+                System.out.print("\t");
             }
 
-            System.out.println();
+            System.out.println("*\t");
+            nsp--;
         }
     }
 
@@ -29,6 +24,5 @@ public class pattern_8 {
         int n = scn.nextInt();
 
         pattern(n);
-        scn.close();
     }
 }

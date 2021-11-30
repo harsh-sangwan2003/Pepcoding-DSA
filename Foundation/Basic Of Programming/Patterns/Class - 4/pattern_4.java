@@ -12,15 +12,13 @@ public class pattern_4 {
 
                 System.out.print("\t");
             }
-
             for (int cst = 1; cst <= nst; cst++) {
 
                 System.out.print("*\t");
             }
 
-            nsp += 1;
-            nst -= 1;
-
+            nsp++;
+            nst--;
             System.out.println();
         }
     }

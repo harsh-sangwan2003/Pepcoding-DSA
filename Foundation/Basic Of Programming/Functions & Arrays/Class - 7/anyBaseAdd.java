@@ -1,10 +1,8 @@
-package Extra;
-
 import java.util.Scanner;
 
-public class binaryAddition {
+public class anyBaseAdd {
 
-    public static int add(int a, int b) {
+    public static int add(int base, int a, int b) {
 
         int res = 0;
         int pow = 1;
@@ -14,8 +12,8 @@ public class binaryAddition {
 
             int d = carry + (a % 10) + (b % 10);
 
-            carry = d / 2;
-            d = d % 2;
+            carry = d / base;
+            d = d % base;
 
             a /= 10;
             b /= 10;
@@ -30,7 +28,7 @@ public class binaryAddition {
 
         Scanner scn = new Scanner(System.in);
 
-        System.out.println(add(scn.nextInt(), scn.nextInt()));
+        System.out.println(add(scn.nextInt(), scn.nextInt(), scn.nextInt()));
 
         scn.close();
     }

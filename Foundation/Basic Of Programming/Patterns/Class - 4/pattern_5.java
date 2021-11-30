@@ -12,7 +12,6 @@ public class pattern_5 {
 
                 System.out.print("\t");
             }
-
             for (int cst = 1; cst <= nst; cst++) {
 
                 System.out.print("*\t");
@@ -20,16 +19,15 @@ public class pattern_5 {
 
             if (r <= n / 2) {
 
-                nsp -= 1;
                 nst += 2;
+                nsp--;
             }
 
             else {
 
-                nsp += 1;
                 nst -= 2;
+                nsp++;
             }
-
             System.out.println();
         }
     }

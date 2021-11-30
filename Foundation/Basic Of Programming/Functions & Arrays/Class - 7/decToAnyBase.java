@@ -1,31 +1,32 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class decToAnyBase {
 
-    public static int decToAny(int num, int b) {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int b = scn.nextInt();
+        int dn = getValueInBase(n, b);
+        System.out.println(dn);
 
-        int ans = 0;
+        scn.close();
+    }
+
+    public static int getValueInBase(int n, int b) {
+        // write code here
+
+        int res = 0;
         int pow = 1;
 
-        while (num != 0) {
+        while (n != 0) {
 
-            int rem = num % b;
-            num /= b;
+            int rem = n % b;
+            n /= b;
 
-            ans += rem * pow;
+            res += rem * pow;
             pow *= 10;
         }
 
-        return ans;
-    }
-
-    public static void main(String[] args) {
-
-        Scanner scn = new Scanner(System.in);
-        int num = scn.nextInt();
-        int b = scn.nextInt();
-
-        System.out.println(decToAny(num, b));
-        scn.close();
+        return res;
     }
 }

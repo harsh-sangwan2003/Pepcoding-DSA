@@ -1,19 +1,23 @@
 import java.util.Scanner;
 
-public class pattern_1 {
+public class pattern1 {
 
     public static void pattern(int n) {
 
-        int nst = 1;
+        int nst = 4, nsp = 4;
 
         for (int r = 1; r <= n; r++) {
+
+            for (int csp = 1; csp <= nsp; csp++) {
+
+                System.out.print("\t");
+            }
 
             for (int cst = 1; cst <= nst; cst++) {
 
                 System.out.print("*\t");
             }
 
-            nst++;
             System.out.println();
         }
     }
