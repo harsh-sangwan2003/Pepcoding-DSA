@@ -1,14 +1,5 @@
 import java.util.Scanner;
-
 public class spanOfArray {
-
-    public static Scanner scn = new Scanner(System.in);
-
-    public static void takeInput(int[] arr) {
-
-        for (int i = 0; i < arr.length; i++)
-            arr[i] = scn.nextInt();
-    }
 
     public static int span(int[] arr) {
 
@@ -32,8 +23,9 @@ public class spanOfArray {
 
         int n = scn.nextInt();
         int[] arr = new int[n];
-        takeInput(arr);
-
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = scn.nextInt();
+        
         System.out.println(span(arr));
 
         scn.close();
