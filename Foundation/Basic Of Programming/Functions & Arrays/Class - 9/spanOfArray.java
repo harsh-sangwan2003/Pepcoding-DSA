@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class spanOfArray {
 
     public static int span(int[] arr) {
