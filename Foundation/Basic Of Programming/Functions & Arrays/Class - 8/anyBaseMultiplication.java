@@ -44,7 +44,7 @@ public class anyBaseMultiplication {
 
         int carry = 0, res = 0, pow = 1;
 
-        while (n != 0) {
+        while (n != 0 || carry!=0) {
 
             int prod = carry + (n % 10 * digit);
             n /= 10;
