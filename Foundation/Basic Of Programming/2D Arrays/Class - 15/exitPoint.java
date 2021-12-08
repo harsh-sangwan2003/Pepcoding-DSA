@@ -14,45 +14,45 @@ public class exitPoint {
 
             if (dir == 0) {
 
-                j+=1;
+                j += 1;
             }
 
             else if (dir == 1) {
 
-                i+=1;
+                i += 1;
             }
 
             else if (dir == 2) {
 
-                j-=1;
+                j -= 1;
             }
 
             else {
 
-                i-=1;
+                i -= 1;
             }
 
-            if(i<0){
+            if (i < 0) {
 
-                i+=1;
+                i += 1;
                 break;
             }
 
-            if(j<0){
+            if (j < 0) {
 
-                j+=1;
+                j += 1;
                 break;
             }
 
-            if(i==arr.length){
+            if (i == arr.length) {
 
-                i-=1;
+                i -= 1;
                 break;
             }
 
-            if(j==arr[0].length){
+            if (j >= arr[0].length) {
 
-                j-=1;
+                j -= 1;
                 break;
             }
         }
