@@ -11,10 +11,10 @@ public class toggleCase {
             char ch = str.charAt(i);
 
             if (ch >= 'a' && ch <= 'z')
-                ans += Character.toUpperCase(ch);
+                ans += (char) (ch - 32);
 
             else
-                ans += Character.toLowerCase(ch);
+                ans += (char) (ch + 32);
         }
 
         return ans;
