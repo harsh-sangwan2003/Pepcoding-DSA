@@ -11,7 +11,7 @@ public class testingString {
         int en = (int) System.currentTimeMillis();
         int diff = en - st;
 
-        // System.out.println(str);
+        System.out.println(str);
         System.out.println(diff);
     }
 }
