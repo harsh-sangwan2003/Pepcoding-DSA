@@ -2,6 +2,18 @@ import java.util.Scanner;
 
 public class isPrime {
 
+    public static boolean prime(int num) {
+
+        for (int n = 2; n < num; n++) {
+            if (num % n == 0) {
+                return false;
+
+            }
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
@@ -10,28 +22,13 @@ public class isPrime {
         for (int i = 1; i <= t; i++) {
 
             int num = scn.nextInt();
-            boolean isPrime = true;
 
-            for (int n = 2; n < num; n++) {
-
-                if (num % n == 0) {
-
-                    isPrime = false;
-                    break;
-                }
-            }
-
-            if (isPrime) {
-
+            if (prime(num))
                 System.out.println("prime");
-            }
 
-            else {
-
+            else
                 System.out.println("not prime");
-            }
         }
-
         scn.close();
     }
 }

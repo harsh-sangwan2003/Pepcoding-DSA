@@ -13,25 +13,18 @@ public class primeTillN {
         return true;
     }
 
-    public static void printPrime(int a, int b) {
-
-        for (int num = a; num <= b; num++) {
-
-            if (isPrime(num)) {
-
-                System.out.println(num);
-            }
-        }
-    }
-
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
+        int low = scn.nextInt(), high = scn.nextInt();
 
-        int low = scn.nextInt();
-        int high = scn.nextInt();
+        for (int n = low; n <= high; n++) {
 
-        printPrime(low, high);
+            if (isPrime(n))
+                System.out.println(n);
+
+        }
+
         scn.close();
     }
 }

@@ -2,48 +2,40 @@ import java.util.Scanner;
 
 public class digitsOfNumber {
 
-    public static int countDigits(int n) {
+    public static int countDigits(int num) {
 
         int count = 0;
 
-        while (n != 0) {
+        while (num != 0) {
 
-            n /= 10;
+            num /= 10;
             count++;
         }
 
         return count;
     }
 
-    public static int calculatePower(int n) {
+    public static void printDigits(int num) {
 
-        int res = 1;
+        int nod = countDigits(num);
+        int div = (int) Math.pow(10, nod - 1);
 
-        for (int i = 1; i <= n; i++)
-            res *= 10;
+        while (nod != 0) {
 
-        return res;
-    }
-
-    public static void digits(int n) {
-
-        int len = countDigits(n);
-        int div = calculatePower(len - 1);
-
-        while (div != 0) {
-
-            System.out.println(n / div);
-            n = n % div;
+            int firstDigit = num / div;
+            num = num % div;
             div /= 10;
+            System.out.println(firstDigit);
+            nod--;
         }
-
     }
 
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
+        int num = scn.nextInt();
 
-        digits(n);
+        printDigits(num);
+        scn.close();
     }
 }
