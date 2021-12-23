@@ -1,3 +1,6 @@
+// Time - O(log(mina,b))
+// Spcae - O(1)
+
 import java.util.Scanner;
 
 public class gcdLcm2 {

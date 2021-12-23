@@ -2,14 +2,15 @@ import java.util.Scanner;
 
 public class primeFactorisation {
 
-    public static void primeFactors(int num) {
+    public static void factorise(int num) {
 
         for (int i = 2; i * i <= num; i++) {
 
-            while (num % i == 0) {
+            int temp = i;
+            while (num % temp == 0) {
 
-                System.out.print(i + " ");
-                num /= i;
+                System.out.print(temp + " ");
+                num /= temp;
             }
         }
 
@@ -20,9 +21,9 @@ public class primeFactorisation {
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
-        int num = scn.nextInt();
+        int n = scn.nextInt();
 
-        primeFactors(num);
+        factorise(n);
         scn.close();
     }
 }

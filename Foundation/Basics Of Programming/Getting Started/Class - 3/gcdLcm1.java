@@ -1,49 +1,50 @@
+// Time - O(n)
+// Spcae - O(1)
+
 import java.util.Scanner;
 
 public class gcdLcm1 {
 
-    public static int findGcd(int a, int b) {
+    public static int GCD(int a, int b) {
 
-        int pans = 1;
-
+        int ans = 1;
         if (a > b) {
-
-            for (int i = 2; i <= b; i++) {
-
-                if (a % i == 0 && b % i == 0)
-                    pans = i;
-            }
-        }
-
-        else if (a < b) {
 
             for (int i = 2; i <= a; i++) {
 
-                if (a % i == 0 && b % i == 0)
-                    pans = i;
+                if (a % i == 0 && b % i == 0) {
+
+                    ans = i;
+                }
             }
         }
 
         else {
+            for (int i = 2; i <= b; i++) {
 
-            pans = a;
+                if (a % i == 0 && b % i == 0) {
+
+                    ans = i;
+                }
+            }
         }
 
-        return pans;
+        return ans;
     }
 
-    public static int findLcm(int a, int b, int gcd) {
+    public static int LCM(int a, int b, int gcd) {
 
-        return a * b / gcd;
+        return (a * b) / gcd;
     }
 
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
-        int a = scn.nextInt(), b = scn.nextInt();
+        int a = scn.nextInt();
+        int b = scn.nextInt();
 
-        int gcd = findGcd(a, b);
-        int lcm = findLcm(a, b, gcd);
+        int gcd = GCD(a, b);
+        int lcm = LCM(a, b, gcd);
 
         System.out.println(gcd);
         System.out.println(lcm);

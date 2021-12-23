@@ -1,28 +1,33 @@
+// Time - O(logn)
+//Space - O(1)
+
 import java.util.Scanner;
 
 public class inverseEasy {
 
-    public static int Inverse(int num) {
+    public static int inverse(int n) {
 
-        int idx = 1, res = 0, ld = 0;
+        int idx = 1;
+        int ans = 0;
 
-        while (num != 0) {
+        while (n != 0) {
 
-            ld = num % 10;
-            num /= 10;
-            res += idx * (int) Math.pow(10, ld - 1);
+            int ld = n % 10;
+            n /= 10;
+
+            ans += (int) Math.pow(10, ld - 1) * idx;
             idx++;
         }
 
-        return res;
+        return ans;
     }
 
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
-        int num = scn.nextInt();
+        int n = scn.nextInt();
 
-        System.out.println(Inverse(num));
+        System.out.println(inverse(n));
         scn.close();
     }
 }

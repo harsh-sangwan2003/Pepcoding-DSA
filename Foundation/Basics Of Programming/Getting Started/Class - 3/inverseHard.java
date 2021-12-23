@@ -1,42 +1,47 @@
+// Time - O(logn)
+//Space - O(1)
+
 import java.util.Scanner;
 
 public class inverseHard {
 
-    public static int noOfDigits(int n) {
+    public static int countDigits(int num) {
 
         int count = 0;
 
-        while (n != 0) {
+        while (num != 0) {
 
-            n /= 10;
+            num /= 10;
             count++;
         }
 
         return count;
     }
 
-    public static int Inverse(int num) {
+    public static int inverse(int n) {
 
-        int idx = noOfDigits(num), res = 0, ld = 0, digits = idx;
+        int ans = 0;
+        int nod = countDigits(n);
+        int idx = nod;
 
-        while (num != 0) {
+        while (n != 0) {
 
-            ld = num % 10;
-            num /= 10;
-            res += idx * (int) Math.pow(10, digits - ld);
+            int ld = n % 10;
+            n /= 10;
+
+            ans += (int) Math.pow(10, nod - ld) * idx;
             idx--;
         }
 
-        return res;
+        return ans;
     }
 
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
-        int num = scn.nextInt();
+        int n = scn.nextInt();
 
-        System.out.println(Inverse(num));
-
+        System.out.println(inverse(n));
         scn.close();
     }
 }

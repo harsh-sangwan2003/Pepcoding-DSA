@@ -1,3 +1,6 @@
+// Time - O(logk)
+// Space - O(1)
+
 import java.util.Scanner;
 
 public class rotateNumber {
@@ -8,36 +11,26 @@ public class rotateNumber {
 
         while (num != 0) {
 
-            count++;
             num /= 10;
+            count++;
         }
 
         return count;
     }
 
-    public static int pow(int n) {
-
-        int res = 1;
-
-        for (int i = 1; i <= n; i++)
-            res *= 10;
-
-        return res;
-    }
-
     public static int rotate(int num, int k) {
 
-        int len = countDigits(num);
+        int nod = countDigits(num);
+        k = k % nod;
+        if (k < 0)
+            k += nod;
 
-        k = (k % len + len) % len;
+        int div = (int) Math.pow(10, k);
+        int mul = (int) Math.pow(10, nod - k);
 
-        int div = pow(k);
-        int mul = pow(len - k);
-
-        int a = num % div;
-        int b = num / div;
-
-        int ans = a * mul + b;
+        int a = num / div;
+        int b = num % div;
+        int ans = b * mul + a;
 
         return ans;
     }

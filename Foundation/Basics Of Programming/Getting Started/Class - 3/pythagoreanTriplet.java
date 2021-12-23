@@ -1,10 +1,13 @@
+// Time - O(1)
+// Space - O(1)
+
 import java.util.Scanner;
 
 public class pythagoreanTriplet {
 
     public static boolean checkTriplet(int a, int b, int c) {
 
-        if ((a * a == b * b + c * c) || (b * b == a * a + c * c) || (c * c == b * b + a * a))
+        if (a * a == b * b + c * c || b * b == a * a + c * c || c * c == a * a + b * b)
             return true;
 
         else
