@@ -1,3 +1,6 @@
+// Time - O(t*num)
+// Space - O(1)
+
 import java.util.Scanner;
 
 public class isPrime {

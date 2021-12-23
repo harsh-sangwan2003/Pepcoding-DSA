@@ -1,3 +1,6 @@
+// Time - O(t*n)
+//Space - O(1)
+
 import java.util.Scanner;
 
 public class primeTillN {
