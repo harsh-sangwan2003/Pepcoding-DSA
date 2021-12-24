@@ -1,20 +1,20 @@
 import java.util.Scanner;
 
-public class pattern_6 {
+public class pattern_9 {
 
     public static void pattern(int n) {
 
-        for (int r = 1; r <= n; r++) {
+        for (int i = 0; i < n; i++) {
 
-            for (int c = 1; c <= n; c++) {
+            for (int j = 0; j < n; j++) {
 
-                if (r == c || r + c == n + 1)
+                if (i == j || i + j == n - 1)
                     System.out.print("*\t");
 
                 else
                     System.out.print("\t");
-            }
 
+            }
             System.out.println();
         }
     }
@@ -25,5 +25,6 @@ public class pattern_6 {
         int n = scn.nextInt();
 
         pattern(n);
+        scn.close();
     }
 }

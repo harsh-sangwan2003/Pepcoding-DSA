@@ -11,34 +11,26 @@ public class pattern_16 {
             int num = 1;
 
             for (int cst = 1; cst <= nst; cst++) {
-
                 System.out.print(num + "\t");
                 num++;
-
             }
 
             for (int csp = 1; csp <= nsp; csp++) {
-
                 System.out.print("\t");
             }
 
             if (r == n) {
-
                 nst--;
                 num--;
             }
 
             num--;
-
             for (int cst = 1; cst <= nst; cst++) {
-
                 System.out.print(num + "\t");
                 num--;
-
             }
 
             System.out.println();
-
             nst++;
             nsp -= 2;
         }
@@ -50,7 +42,6 @@ public class pattern_16 {
         int n = scn.nextInt();
 
         pattern(n);
-
         scn.close();
     }
 }

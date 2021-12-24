@@ -8,35 +8,28 @@ public class pattern_17 {
 
         for (int r = 1; r <= n; r++) {
 
-            for (int csp = 1; csp <= nsp; csp++) {
+            if (r == n / 2 + 1) {
 
-                if (r == n / 2 + 1) {
-
+                for (int j = 1; j <= n; j++)
                     System.out.print("*\t");
-                }
-
-                else {
-
-                    System.out.print("\t");
-                }
-            }
-
-            for (int cst = 1; cst <= nst; cst++) {
-
-                System.out.print("*\t");
-            }
-
-            System.out.println();
-
-            if (r <= n / 2) {
-
-                nst++;
             }
 
             else {
 
-                nst--;
+                for (int csp = 1; csp <= nsp; csp++)
+                    System.out.print("\t");
+
+                for (int cst = 1; cst <= nst; cst++)
+                    System.out.print("*\t");
             }
+
+            System.out.println();
+
+            if (r <= n / 2)
+                nst++;
+
+            else
+                nst--;
         }
     }
 
@@ -47,6 +40,5 @@ public class pattern_17 {
 
         pattern(n);
         scn.close();
-
     }
 }

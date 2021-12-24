@@ -6,21 +6,20 @@ public class pattern_19 {
 
         for (int r = 1; r <= n; r++) {
 
-            for (int c = 1; c <= n; c++) {
+            for (int j = 1; j <= n; j++) {
 
                 if (r == 1) {
 
-                    if ((c <= n / 2 + 1) || c == n)
+                    if (j <= n / 2 + 1 || j == n)
                         System.out.print("*\t");
 
                     else
                         System.out.print("\t");
-
                 }
 
-                else if (r <= n / 2) {
+                else if (r > 1 && r <= n / 2) {
 
-                    if (c == n / 2 + 1 || c == n)
+                    if (j == n / 2 + 1 || j == n)
                         System.out.print("*\t");
 
                     else
@@ -32,9 +31,8 @@ public class pattern_19 {
                     System.out.print("*\t");
                 }
 
-                else if (r < n) {
-
-                    if (c == 1 || c == n / 2 + 1)
+                else if (r > n / 2 + 1 && r < n) {
+                    if (j == n / 2 + 1 || j == 1)
                         System.out.print("*\t");
 
                     else
@@ -42,8 +40,7 @@ public class pattern_19 {
                 }
 
                 else {
-
-                    if (c == 1 || (c >= n / 2 + 1))
+                    if (j >= n / 2 + 1 || j == 1)
                         System.out.print("*\t");
 
                     else
@@ -62,6 +59,5 @@ public class pattern_19 {
 
         pattern(n);
         scn.close();
-
     }
 }

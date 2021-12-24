@@ -1,6 +1,8 @@
+package Extra;
+
 import java.util.Scanner;
 
-public class pattern_1 {
+public class one {
 
     public static void pattern(int n) {
 
@@ -9,15 +11,19 @@ public class pattern_1 {
         for (int r = 1; r <= n; r++) {
 
             for (int csp = 1; csp <= nsp; csp++) {
-
                 System.out.print("\t");
             }
 
             int num = r <= n / 2 + 1 ? r : n - r + 1;
 
             for (int cst = 1; cst <= nst; cst++) {
-
                 System.out.print(num + "\t");
+
+                if (cst <= nst / 2)
+                    num--;
+
+                else
+                    num++;
             }
 
             System.out.println();
@@ -38,8 +44,8 @@ public class pattern_1 {
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
-
         int n = scn.nextInt();
+
         pattern(n);
         scn.close();
     }

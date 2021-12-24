@@ -1,21 +1,18 @@
+package Extra;
+
 import java.util.Scanner;
 
-public class pattern1 {
+public class two {
 
     public static void pattern(int n) {
 
-        int nst = 4, nsp = 4;
+        for (int i = 0; i < n; i++) {
 
-        for (int r = 1; r <= n; r++) {
+            int num = 1;
+            for (int j = 0; j <= i; j++) {
 
-            for (int csp = 1; csp <= nsp; csp++) {
-
-                System.out.print("\t");
-            }
-
-            for (int cst = 1; cst <= nst; cst++) {
-
-                System.out.print("*\t");
+                System.out.print(num + "\t");
+                num = ((i - j) * num) / (j + 1);
             }
 
             System.out.println();

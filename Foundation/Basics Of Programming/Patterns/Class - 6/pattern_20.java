@@ -4,16 +4,23 @@ public class pattern_20 {
 
     public static void pattern(int n) {
 
-        for (int r = 1; r <= n; r++) {
+        for (int i = 1; i <= n; i++) {
 
-            for (int c = 1; c <= n; c++) {
+            for (int j = 1; j <= n; j++) {
 
-                if (c == 1 || c == n || (r == n / 2 + 1 && c == r) || (r > n / 2 + 1 && c == r)
-                        || (r > n / 2 + 1 && c + r == n + 1))
+                if (j == 1 || j == n) {
+
                     System.out.print("*\t");
+                }
 
-                else
+                else if ((i >= n / 2 + 1) && (i == j || i + j == n + 1)) {
+
+                    System.out.print("*\t");
+                }
+
+                else {
                     System.out.print("\t");
+                }
             }
 
             System.out.println();
@@ -27,6 +34,5 @@ public class pattern_20 {
 
         pattern(n);
         scn.close();
-
     }
 }

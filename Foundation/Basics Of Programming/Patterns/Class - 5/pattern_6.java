@@ -9,7 +9,6 @@ public class pattern_6 {
         for (int r = 1; r <= n; r++) {
 
             for (int cst = 1; cst <= nst; cst++) {
-
                 System.out.print("*\t");
             }
 
@@ -19,23 +18,18 @@ public class pattern_6 {
             }
 
             for (int cst = 1; cst <= nst; cst++) {
-
                 System.out.print("*\t");
             }
-
+            System.out.println();
             if (r <= n / 2) {
-
                 nst--;
                 nsp += 2;
             }
 
             else {
-
                 nst++;
                 nsp -= 2;
             }
-
-            System.out.println();
         }
     }
 
@@ -45,8 +39,6 @@ public class pattern_6 {
         int n = scn.nextInt();
 
         pattern(n);
-
         scn.close();
-
     }
 }

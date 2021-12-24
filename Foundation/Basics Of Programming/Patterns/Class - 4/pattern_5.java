@@ -8,27 +8,23 @@ public class pattern_5 {
 
         for (int r = 1; r <= n; r++) {
 
-            for (int csp = 1; csp <= nsp; csp++) {
-
+            for (int csp = 1; csp <= nsp; csp++)
                 System.out.print("\t");
-            }
-            for (int cst = 1; cst <= nst; cst++) {
 
+            for (int cst = 1; cst <= nst; cst++)
                 System.out.print("*\t");
-            }
+
+            System.out.println();
 
             if (r <= n / 2) {
-
                 nst += 2;
                 nsp--;
             }
 
             else {
-
                 nst -= 2;
                 nsp++;
             }
-            System.out.println();
         }
     }
 

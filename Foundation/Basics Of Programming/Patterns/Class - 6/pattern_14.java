@@ -16,7 +16,6 @@ public class pattern_14 {
         int n = scn.nextInt();
 
         pattern(n);
-
         scn.close();
     }
 }

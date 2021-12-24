@@ -4,17 +4,18 @@ public class pattern_7 {
 
     public static void pattern(int n) {
 
-        int nsp = 0;
+        for (int i = 1; i <= n; i++) {
 
-        for (int r = 1; r <= n; r++) {
+            for (int j = 1; j <= i; j++) {
 
-            for (int csp = 1; csp <= nsp; csp++) {
+                if (i == j)
+                    System.out.print("*\t");
 
-                System.out.print("\t");
+                else
+                    System.out.print("\t");
+
             }
-
-            System.out.println("*\t");
-            nsp++;
+            System.out.println();
         }
     }
 
@@ -24,5 +25,6 @@ public class pattern_7 {
         int n = scn.nextInt();
 
         pattern(n);
+        scn.close();
     }
 }

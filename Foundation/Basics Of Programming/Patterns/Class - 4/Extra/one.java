@@ -1,25 +1,21 @@
+package Extra;
+
 import java.util.Scanner;
 
-public class pattern3 {
+public class one {
 
     public static void pattern(int n) {
 
-        int nst = 2 * n - 1, nsp = 0;
+        int nsp = n, nst = n;
 
         for (int r = 1; r <= n; r++) {
 
-            for (int csp = 1; csp <= nsp; csp++) {
+            for (int csp = 1; csp <= nsp; csp++)
+                System.out.print("  ");
 
-                System.out.print("\t");
-            }
+            for (int cst = 1; cst <= nst; cst++)
+                System.out.print("*" + "    ");
 
-            for (int cst = 1; cst <= nst; cst++) {
-
-                System.out.print("*\t");
-            }
-
-            nst -= 2;
-            nsp++;
             System.out.println();
         }
     }
