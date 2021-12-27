@@ -1,33 +1,35 @@
 import java.util.Scanner;
 
-public class reverseArray {
+public class rotateAnArray {
 
-    public static void swap(int[] arr, int lo, int hi) {
-
-        int temp = arr[lo];
-        arr[lo] = arr[hi];
-        arr[hi] = temp;
-    }
-
-    public static void reverse(int[] arr) {
-
-        int lo = 0;
-        int hi = arr.length - 1;
+    public static void reverse(int[] arr, int lo, int hi) {
 
         while (lo <= hi) {
 
-            swap(arr, lo, hi);
+            int temp = arr[lo];
+            arr[lo] = arr[hi];
+            arr[hi] = temp;
+
             lo++;
             hi--;
         }
+    }
+
+    public static void rotate(int[] arr, int k) {
+
+        k = k % arr.length;
+        if (k < 0)
+            k += arr.length;
+
+        reverse(arr, 0, arr.length - k - 1);
+        reverse(arr, arr.length - k, arr.length - 1);
+        reverse(arr, 0, arr.length - 1);
     }
 
     public static void display(int[] arr) {
 
         for (int i = 0; i < arr.length; i++)
             System.out.print(arr[i] + " ");
-
-        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -39,7 +41,9 @@ public class reverseArray {
         for (int i = 0; i < arr.length; i++)
             arr[i] = scn.nextInt();
 
-        reverse(arr);
+        int k = scn.nextInt();
+
+        rotate(arr, k);
         display(arr);
         scn.close();
     }

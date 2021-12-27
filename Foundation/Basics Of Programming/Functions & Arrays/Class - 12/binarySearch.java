@@ -1,24 +1,24 @@
 import java.util.Scanner;
 
-public class binarySearch{
+public class binarySearch {
 
-    public static int search(int[] arr, int target){
+    public static int search(int[] arr, int x) {
 
         int lo = 0;
-        int hi = arr.length-1;
+        int hi = arr.length - 1;
 
-        while(lo<=hi){
+        while (lo <= hi) {
 
-            int mid = lo + (hi-lo)/2;
-        
-            if(arr[mid]==target)
-            return mid;
+            int mid = lo + (hi - lo) / 2;
 
-            else if(arr[mid]>target)
-            hi = mid-1;
+            if (arr[mid] == x)
+                return mid;
 
-            else 
-            lo = mid+1;
+            else if (arr[mid] > x)
+                hi = mid - 1;
+
+            else
+                lo = mid + 1;
         }
 
         return -1;
@@ -30,14 +30,13 @@ public class binarySearch{
         int n = scn.nextInt();
 
         int[] arr = new int[n];
-        for(int i=0; i<arr.length; i++){
-
+        for (int i = 0; i < arr.length; i++)
             arr[i] = scn.nextInt();
-        }
 
-        int target = scn.nextInt();
+        int x = scn.nextInt();
+        int idx = search(arr, x);
 
-        System.out.println(search(arr,target));
+        System.out.println(idx);
         scn.close();
     }
 }

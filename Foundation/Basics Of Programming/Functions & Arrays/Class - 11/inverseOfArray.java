@@ -1,34 +1,35 @@
 import java.util.Scanner;
 
-public class spanOfArray {
+public class inverseOfArray {
 
-    public static int span(int[] arr) {
+    public static int[] inverse(int[] arr) {
 
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
+        int[] ans = new int[arr.length];
 
         for (int i = 0; i < arr.length; i++) {
-
-            max = Math.max(arr[i], max);
-            min = Math.min(arr[i], min);
+            ans[arr[i]] = i;
         }
 
-        int span = max - min;
+        return ans;
+    }
 
-        return span;
+    public static void display(int[] arr) {
+
+        for (int i = 0; i < arr.length; i++)
+            System.out.println(arr[i]);
     }
 
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
-
         int n = scn.nextInt();
+
         int[] arr = new int[n];
         for (int i = 0; i < arr.length; i++)
             arr[i] = scn.nextInt();
-        
-        System.out.println(span(arr));
 
+        arr = inverse(arr);
+        display(arr);
         scn.close();
     }
 }
