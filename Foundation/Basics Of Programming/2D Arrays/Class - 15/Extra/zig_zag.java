@@ -2,28 +2,27 @@ package Extra;
 
 import java.util.Scanner;
 
-public class spiral2 {
+public class zig_zag {
 
-    public static void spiral(int[][] arr) {
+    public static void pattern(int[][] arr) {
 
         boolean flag = true;
 
-        for (int r = 0; r < arr.length; r++) {
+        for (int r = arr.length - 1; r >= 0; r--) {
 
             if (flag) {
 
                 for (int c = arr[0].length - 1; c >= 0; c--)
-                    System.out.print(arr[r][c] + " ");
+                    System.out.println(arr[r][c]);
             }
 
             else {
 
                 for (int c = 0; c < arr[0].length; c++)
-                    System.out.print(arr[r][c] + " ");
+                    System.out.println(arr[r][c]);
             }
 
             flag = !flag;
-            System.out.println();
         }
     }
 
@@ -34,15 +33,15 @@ public class spiral2 {
         int m = scn.nextInt();
 
         int[][] arr = new int[n][m];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < arr.length; i++) {
 
-            for (int j = 0; j < m; j++) {
+            for (int j = 0; j < arr[0].length; j++) {
 
                 arr[i][j] = scn.nextInt();
             }
         }
 
-        spiral(arr);
+        pattern(arr);
         scn.close();
     }
 }

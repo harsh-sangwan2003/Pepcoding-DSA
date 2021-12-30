@@ -11,39 +11,38 @@ public class searchIn2D {
 
             if (arr[r][c] == target) {
 
-                break;
+                System.out.println(r);
+                System.out.println(c);
+                return;
             }
 
-            else if (arr[r][c] > target)
-                c--;
+            else if (arr[r][c] > target) {
 
-            else
-                r++;
+                c -= 1;
+            }
 
-            if (r < 0 || c < 0 || r >= arr.length || c >= arr[0].length)
+            else {
+
+                r += 1;
+            }
+
+            if (r < 0 || c < 0 || r == arr.length || c == arr.length)
                 break;
-
         }
 
-        if (r < 0 || c < 0 || r >= arr.length || c >= arr[0].length)
-            System.out.println("Not Found");
-
-        else {
-
-            System.out.println(r);
-            System.out.println(c);
-        }
+        System.out.println("Not Found");
     }
 
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
+
         int n = scn.nextInt();
 
         int[][] arr = new int[n][n];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < arr.length; i++) {
 
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < arr[0].length; j++) {
 
                 arr[i][j] = scn.nextInt();
             }

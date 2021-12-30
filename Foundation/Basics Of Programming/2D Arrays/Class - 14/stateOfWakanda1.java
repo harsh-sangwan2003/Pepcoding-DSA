@@ -1,14 +1,12 @@
-package Extra;
-
 import java.util.Scanner;
 
-public class wakanda {
+public class stateOfWakanda1 {
 
     public static void printState(int[][] arr) {
 
         for (int j = 0; j < arr[0].length; j++) {
 
-            if (j % 2 == 1) {
+            if (j % 2 == 0) {
 
                 for (int i = 0; i < arr.length; i++) {
 

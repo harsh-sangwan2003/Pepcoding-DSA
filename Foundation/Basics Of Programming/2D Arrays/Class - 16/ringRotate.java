@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class ringRotate {
 
-    public static void shellRotate(int[][] arr, int s, int r) {
+    public static void rotate(int[][] arr, int s, int r) {
 
         int[] oned = fillUpOned(arr, s);
-        rotateArray(oned, r);
+        rotate(oned, r);
         fillUpTwod(arr, oned, s);
     }
 
@@ -15,13 +15,11 @@ public class ringRotate {
         int minc = s - 1;
         int maxr = arr.length - s;
         int maxc = arr[0].length - s;
-
         int size = 2 * (maxr - minr + maxc - minc);
         int[] array = new int[size];
-
         int idx = 0;
 
-        while (idx < array.length) {
+        while (idx < size) {
 
             // Left
             for (int r = minr; r <= maxr; r++) {
@@ -29,97 +27,101 @@ public class ringRotate {
                 array[idx] = arr[r][minc];
                 idx++;
             }
+            minc++;
 
             // Bottom
-            for (int c = minc + 1; c <= maxc; c++) {
+            for (int c = minc; c <= maxc; c++) {
 
                 array[idx] = arr[maxr][c];
                 idx++;
             }
+            maxr--;
 
             // Right
-            for (int r = maxr - 1; r >= minr; r--) {
+            for (int r = maxr; r >= minr; r--) {
 
                 array[idx] = arr[r][maxc];
                 idx++;
             }
+            maxc--;
 
             // Top
-            for (int c = maxc - 1; c > minc; c--) {
+            for (int c = maxc; c >= minc; c--) {
 
                 array[idx] = arr[minr][c];
                 idx++;
             }
-
-            // Right
-
+            minr++;
         }
 
         return array;
     }
 
-    public static void fillUpTwod(int[][] arr, int[] oned, int s) {
-
-        int minr = s - 1;
-        int minc = s - 1;
-        int maxr = arr.length - s;
-        int maxc = arr[0].length - s;
-
-        int idx = 0;
-
-        while (idx < oned.length) {
-
-            // Left
-            for (int r = minr; r <= maxr; r++) {
-
-                arr[r][minc] = oned[idx];
-                idx++;
-            }
-
-            // Bottom
-            for (int c = minc + 1; c <= maxc; c++) {
-
-                arr[maxr][c] = oned[idx];
-                idx++;
-            }
-
-            // Right
-            for (int r = maxr - 1; r >= minr; r--) {
-
-                arr[r][maxc] = oned[idx];
-                idx++;
-            }
-
-            // Top
-            for (int c = maxc - 1; c > minc; c--) {
-
-                arr[minr][c] = oned[idx];
-                idx++;
-            }
-        }
-    }
-
-    public static void rotateArray(int[] arr, int r) {
+    public static void rotate(int[] arr, int r) {
 
         r = r % arr.length;
         if (r < 0)
             r += arr.length;
 
-        reverseArray(arr, 0, arr.length - r - 1);
-        reverseArray(arr, arr.length - r, arr.length - 1);
-        reverseArray(arr, 0, arr.length - 1);
+        reverse(arr, 0, arr.length - r - 1);
+        reverse(arr, arr.length - r, arr.length - 1);
+        reverse(arr, 0, arr.length - 1);
     }
 
-    public static void reverseArray(int[] arr, int lo, int hi) {
+    public static void reverse(int[] arr, int lo, int hi) {
 
         while (lo <= hi) {
 
-            int tmp = arr[lo];
+            int temp = arr[lo];
             arr[lo] = arr[hi];
-            arr[hi] = tmp;
-
+            arr[hi] = temp;
             lo++;
             hi--;
+        }
+    }
+
+    public static void fillUpTwod(int[][] arr, int[] array, int s) {
+
+        int minr = s - 1;
+        int minc = s - 1;
+        int maxr = arr.length - s;
+        int maxc = arr[0].length - s;
+        int size = array.length;
+        int idx = 0;
+
+        while (idx < size) {
+
+            // Left
+            for (int r = minr; r <= maxr; r++) {
+
+                arr[r][minc] = array[idx];
+                idx++;
+            }
+            minc++;
+
+            // Bottom
+            for (int c = minc; c <= maxc; c++) {
+
+                arr[maxr][c] = array[idx];
+                idx++;
+            }
+            maxr--;
+
+            // Right
+            for (int r = maxr; r >= minr; r--) {
+
+                arr[r][maxc] = array[idx];
+                idx++;
+            }
+            maxc--;
+
+            // Top
+            for (int c = maxc; c >= minc; c--) {
+
+                arr[minr][c] = array[idx];
+                idx++;
+            }
+            minr++;
         }
 
     }
@@ -140,20 +142,22 @@ public class ringRotate {
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
+
         int n = scn.nextInt();
         int m = scn.nextInt();
 
         int[][] arr = new int[n][m];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        for (int i = 0; i < arr.length; i++) {
+
+            for (int j = 0; j < arr[0].length; j++) {
+
                 arr[i][j] = scn.nextInt();
             }
         }
 
         int s = scn.nextInt();
         int r = scn.nextInt();
-
-        shellRotate(arr, s, r);
+        rotate(arr, s, r);
         display(arr);
         scn.close();
     }

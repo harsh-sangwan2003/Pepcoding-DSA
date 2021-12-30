@@ -1,6 +1,8 @@
+package Extra;
+
 import java.util.Scanner;
 
-public class spiralDisplay {
+public class spiral2 {
 
     public static void printSpiral(int[][] arr) {
 
@@ -13,37 +15,37 @@ public class spiralDisplay {
 
         while (count < ne) {
 
-            // Left
-            for (int r = minr; r <= maxr && count < ne; r++) {
-
-                System.out.println(arr[r][minc]);
-                count++;
-            }
-            minc++;
-
-            // Bottom
+            // Top
             for (int c = minc; c <= maxc && count < ne; c++) {
 
-                System.out.println(arr[maxr][c]);
+                System.out.println(arr[minr][c]);
                 count++;
             }
-            maxr--;
+            minr++;
 
             // Right
-            for (int r = maxr; r >= minr && count < ne; r--) {
+            for (int r = minr; r <= maxr && count < ne; r++) {
 
                 System.out.println(arr[r][maxc]);
                 count++;
             }
             maxc--;
 
-            // Top
+            // Bottom
             for (int c = maxc; c >= minc && count < ne; c--) {
 
-                System.out.println(arr[minr][c]);
+                System.out.println(arr[maxr][c]);
                 count++;
             }
-            minr++;
+            maxr--;
+
+            // Left
+            for (int r = maxr; r >= minr && count < ne; r--) {
+
+                System.out.println(arr[r][minc]);
+                count++;
+            }
+            minc++;
         }
     }
 

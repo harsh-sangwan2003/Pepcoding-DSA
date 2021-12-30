@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class stateOfWakanda2 {
 
-    public static void printState(int[][] arr) {
+    public static void pattern(int[][] arr) {
 
         for (int gap = 0; gap < arr.length; gap++) {
 
-            for (int i = 0, j = gap; i < arr.length && j < arr.length; i++, j++) {
+            for (int i = 0, j = gap; j < arr.length; i++, j++) {
 
                 System.out.println(arr[i][j]);
             }
@@ -16,19 +16,19 @@ public class stateOfWakanda2 {
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
 
+        int n = scn.nextInt();
         int[][] arr = new int[n][n];
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < arr.length; i++) {
 
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < arr[0].length; j++) {
 
                 arr[i][j] = scn.nextInt();
             }
         }
 
-        printState(arr);
+        pattern(arr);
         scn.close();
     }
 }
