@@ -52,5 +52,6 @@ public class max_min_2 {
             arr[i] = scn.nextInt();
 
         System.out.println(max_min(arr)[0] + " " + max_min(arr)[1]);
+        scn.close();
     }
 }
