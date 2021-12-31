@@ -6,30 +6,31 @@ public class printPermutations {
 
         int res = 1;
 
-        for (int i = num; i > 1; i--)
+        for (int i = 2; i <= num; i++)
             res *= i;
 
         return res;
     }
 
-    public static void print(String str) {
+    public static void solution(String str) {
+        
+        int end = factorial(str.length());
 
-        int et = factorial(str.length());
-
-        for (int i = 0; i < et; i++) {
+        for (int i = 0; i < end; i++) {
 
             int temp = i;
-            String s = str;
-            StringBuilder ans = new StringBuilder();
+            StringBuilder sb = new StringBuilder(str);
+            StringBuilder ans = new StringBuilder("");
+
             for (int div = str.length(); div >= 1; div--) {
 
                 int rem = temp % div;
-                temp = temp / div;
+                temp /= div;
 
-                String left = s.substring(0, rem);
-                ans.append(s.charAt(rem));
-                String right = s.substring(rem + 1);
-                s = left + right;
+                char ch = sb.charAt(rem);
+                sb.deleteCharAt(rem);
+
+                ans.append(ch);
             }
 
             System.out.println(ans);
@@ -37,11 +38,12 @@ public class printPermutations {
     }
 
     public static void main(String[] args) {
-
         Scanner scn = new Scanner(System.in);
-        String str = scn.nextLine();
+        String str = scn.next();
 
-        print(str);
+        solution(str);
+
         scn.close();
     }
+
 }

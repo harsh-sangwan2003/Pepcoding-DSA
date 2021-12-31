@@ -2,25 +2,29 @@ import java.util.Scanner;
 
 public class stringCompression {
 
-    public static String compression1(String str) {
+    public static String comp1(String str) {
 
-        String ans = "" + str.charAt(0);
+        char st = str.charAt(0);
+        StringBuilder ans = new StringBuilder();
+        ans.append(st);
 
         for (int i = 1; i < str.length(); i++) {
 
             char prev = str.charAt(i - 1);
             char curr = str.charAt(i);
 
-            if (curr != prev)
-                ans += curr;
+            if (prev != curr)
+                ans.append(curr);
         }
 
-        return ans;
+        return ans.toString();
     }
 
-    public static String compression2(String str) {
+    public static String comp2(String str) {
 
-        String ans = "" + str.charAt(0);
+        char st = str.charAt(0);
+        StringBuilder ans = new StringBuilder();
+        ans.append(st);
         int count = 1;
 
         for (int i = 1; i < str.length(); i++) {
@@ -28,12 +32,12 @@ public class stringCompression {
             char prev = str.charAt(i - 1);
             char curr = str.charAt(i);
 
-            if (curr != prev) {
+            if (prev != curr) {
 
                 if (count > 1)
-                    ans += count;
+                    ans.append(count);
 
-                ans += curr;
+                ans.append(curr);
                 count = 1;
             }
 
@@ -44,19 +48,21 @@ public class stringCompression {
         }
 
         if (count > 1)
-            ans += count;
+            ans.append(count);
 
-        return ans;
+        return ans.toString();
     }
 
     public static void main(String[] args) {
+
         Scanner scn = new Scanner(System.in);
-        String str = scn.next();
+        String str = scn.nextLine();
 
-        System.out.println(compression1(str));
-        System.out.println(compression2(str));
+        String c1 = comp1(str);
+        System.out.println(c1);
 
+        String c2 = comp2(str);
+        System.out.println(c2);
         scn.close();
     }
-
 }

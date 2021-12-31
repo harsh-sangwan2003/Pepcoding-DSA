@@ -1,8 +1,20 @@
-package Extra;
-
 import java.util.Scanner;
 
-public class isPalindrome {
+public class printPalindromicSubstrings {
+
+    public static void palindromicSubstrings(String str) {
+
+        for (int i = 0; i < str.length(); i++) {
+
+            for (int j = i + 1; j <= str.length(); j++) {
+
+                String ros = str.substring(i, j);
+
+                if (palindrome(ros))
+                    System.out.println(ros);
+            }
+        }
+    }
 
     public static boolean palindrome(String str) {
 
@@ -30,17 +42,7 @@ public class isPalindrome {
         Scanner scn = new Scanner(System.in);
         String str = scn.nextLine();
 
-        boolean flag = palindrome(str);
-
-        if (flag) {
-
-            System.out.println(str + " is a palindromic string");
-        }
-
-        else {
-
-            System.out.println(str + " is not a palindromic string");
-        }
+        palindromicSubstrings(str);
         scn.close();
     }
 }

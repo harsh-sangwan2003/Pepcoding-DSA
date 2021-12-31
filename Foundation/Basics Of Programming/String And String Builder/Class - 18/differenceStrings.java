@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class stringWithDiff {
+public class differenceStrings {
 
     public static String solution(String str) {
 
@@ -9,10 +9,10 @@ public class stringWithDiff {
 
         for (int i = 1; i < str.length(); i++) {
 
-            char curr = str.charAt(i);
             char prev = str.charAt(i - 1);
-            int diff = curr - prev;
+            char curr = str.charAt(i);
 
+            int diff = curr - prev;
             sb.append(diff);
             sb.append(curr);
         }
@@ -21,6 +21,7 @@ public class stringWithDiff {
     }
 
     public static void main(String[] args) {
+
         Scanner scn = new Scanner(System.in);
         String str = scn.next();
 

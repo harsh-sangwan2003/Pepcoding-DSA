@@ -2,15 +2,15 @@ package Extra;
 
 import java.util.Scanner;
 
-public class printSubstrings {
+public class allSubstrings {
 
-    public static void Substrings(String str) {
+    public static void printSubstrings(String str) {
 
         for (int i = 0; i < str.length(); i++) {
 
-            for (int j = i; j < str.length(); j++) {
+            for (int j = i + 1; j <= str.length(); j++) {
 
-                System.out.println(str.substring(i, j + 1));
+                System.out.println(str.substring(i, j));
             }
         }
     }
@@ -20,7 +20,7 @@ public class printSubstrings {
         Scanner scn = new Scanner(System.in);
         String str = scn.nextLine();
 
-        Substrings(str);
+        printSubstrings(str);
         scn.close();
     }
 }
