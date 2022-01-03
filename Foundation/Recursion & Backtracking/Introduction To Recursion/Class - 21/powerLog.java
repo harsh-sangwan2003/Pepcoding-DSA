@@ -7,21 +7,26 @@ public class powerLog {
         if (n == 0)
             return 1;
 
-        int xn2 = power(x, n / 2);
+        int xn_2 = power(x, n / 2);
+        int res = 1;
 
         if (n % 2 == 0)
-            return xn2 * xn2;
+            res = xn_2 * xn_2;
 
         else
-            return xn2 * xn2 * x;
+            res = x * xn_2 * xn_2;
+
+        return res;
     }
 
     public static void main(String[] args) {
+
         Scanner scn = new Scanner(System.in);
         int x = scn.nextInt();
         int n = scn.nextInt();
 
-        System.out.println(power(x, n));
+        int ans = power(x, n);
+        System.out.println(ans);
         scn.close();
     }
 }

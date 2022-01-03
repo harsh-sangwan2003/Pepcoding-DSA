@@ -1,13 +1,26 @@
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class get_KPC {
+
+    public static void main(String[] args) throws Exception {
+
+        Scanner scn = new Scanner(System.in);
+
+        String str = scn.nextLine();
+
+        ArrayList<String> ans = getKPC(str);
+        System.out.println(ans);
+
+        scn.close();
+    }
 
     public static String[] codes = { ".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz" };
 
     public static ArrayList<String> getKPC(String str) {
 
         if (str.length() == 0) {
+
             ArrayList<String> bres = new ArrayList<>();
             bres.add("");
             return bres;
@@ -15,28 +28,19 @@ public class get_KPC {
 
         char ch = str.charAt(0);
         String ros = str.substring(1);
-        ArrayList<String> rres = getKPC(ros);
+
         ArrayList<String> mres = new ArrayList<>();
+        ArrayList<String> rres = getKPC(ros);
 
         for (int i = 0; i < codes[ch - '0'].length(); i++) {
 
             for (String s : rres) {
 
-                char myChar = codes[ch - '0'].charAt(i);
-                mres.add(myChar + s);
+                mres.add(codes[ch - '0'].charAt(i) + s);
             }
         }
 
         return mres;
     }
 
-    public static void main(String[] args) {
-
-        Scanner scn = new Scanner(System.in);
-        String str = scn.nextLine();
-
-        ArrayList<String> ans = getKPC(str);
-        System.out.println(ans);
-        scn.close();
-    }
 }

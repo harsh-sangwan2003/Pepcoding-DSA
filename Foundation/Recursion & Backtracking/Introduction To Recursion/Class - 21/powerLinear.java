@@ -8,16 +8,19 @@ public class powerLinear {
             return 1;
 
         int x_n_1 = power(x, n - 1);
-        int ans = x * x_n_1;
-        return ans;
+        int res = x * x_n_1;
+
+        return res;
     }
 
     public static void main(String[] args) {
+
         Scanner scn = new Scanner(System.in);
         int x = scn.nextInt();
         int n = scn.nextInt();
 
-        System.out.println(power(x, n));
+        int ans = power(x, n);
+        System.out.println(ans);
         scn.close();
     }
 }

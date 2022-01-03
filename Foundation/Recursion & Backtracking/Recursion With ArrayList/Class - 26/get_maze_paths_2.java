@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class get_maze_paths {
+public class get_maze_paths_2 {
 
     public static void main(String[] args) throws Exception {
 
@@ -25,21 +25,22 @@ public class get_maze_paths {
             return bres;
         }
 
-        else if (sr > dr || sc > dc)
-            return new ArrayList<>();
-
         ArrayList<String> mres = new ArrayList<>();
 
-        ArrayList<String> hpaths = getPaths(sr, sc + 1, dr, dc);
-        for (String s : hpaths) {
+        if (sc + 1 <= dc) {
+            ArrayList<String> hpaths = getPaths(sr, sc + 1, dr, dc);
+            for (String s : hpaths) {
 
-            mres.add("h" + s);
+                mres.add("h" + s);
+            }
         }
 
-        ArrayList<String> vpaths = getPaths(sr + 1, sc, dr, dc);
-        for (String s : vpaths) {
+        if (sr + 1 <= dr) {
+            ArrayList<String> vpaths = getPaths(sr + 1, sc, dr, dc);
+            for (String s : vpaths) {
 
-            mres.add("v" + s);
+                mres.add("v" + s);
+            }
         }
 
         return mres;

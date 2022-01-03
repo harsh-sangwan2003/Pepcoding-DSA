@@ -1,12 +1,13 @@
 import java.util.Scanner;
 
-public class printIncreasing {
+public class printDecrIncr {
 
     public static void print(int n) {
 
         if (n == 0)
             return;
 
+        System.out.println(n);
         print(n - 1);
         System.out.println(n);
     }
