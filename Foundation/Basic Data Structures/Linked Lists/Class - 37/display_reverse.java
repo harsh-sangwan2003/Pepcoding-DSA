@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class reverse_recursive {
+public class display_reverse {
     public static class Node {
         int data;
         Node next;
@@ -364,47 +364,18 @@ public class reverse_recursive {
         }
 
         private void displayReverseHelper(Node node) {
-            if (node == null) {
+            // write your code here
+            if (node == null)
                 return;
-            }
+
             displayReverseHelper(node.next);
+
             System.out.print(node.data + " ");
         }
 
         public void displayReverse() {
             displayReverseHelper(head);
             System.out.println();
-        }
-
-        private void reversePRHelper(Node node) {
-            // write your code here
-
-            if (node == null)
-                return;
-
-            reversePRHelper(node.next);
-
-            if (node == tail) {
-
-            }
-
-            else {
-
-                node.next.next = node;
-            }
-
-        }
-
-        public void reversePR() {
-            // write your code here
-            reversePRHelper(this.head);
-
-            this.head.next = null;
-
-            Node temp = this.head;
-            this.head = this.tail;
-            this.tail = temp;
-
         }
     }
 
@@ -423,7 +394,7 @@ public class reverse_recursive {
         int b = Integer.parseInt(br.readLine());
 
         l1.display();
-        l1.reversePR();
+        l1.displayReverse();
         l1.addLast(a);
         l1.addFirst(b);
         l1.display();

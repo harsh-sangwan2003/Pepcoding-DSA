@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class display_reverse {
+public class fold_linked_list {
     public static class Node {
         int data;
         Node next;
@@ -364,11 +364,9 @@ public class display_reverse {
         }
 
         private void displayReverseHelper(Node node) {
-            // write your code here
-
-            if (node == null)
+            if (node == null) {
                 return;
-
+            }
             displayReverseHelper(node.next);
             System.out.print(node.data + " ");
         }
@@ -376,6 +374,53 @@ public class display_reverse {
         public void displayReverse() {
             displayReverseHelper(head);
             System.out.println();
+        }
+
+        private void reversePRHelper(Node node) {
+            if (node == tail) {
+                return;
+            }
+            reversePRHelper(node.next);
+            node.next.next = node;
+        }
+
+        public void reversePR() {
+            reversePRHelper(head);
+            Node temp = head;
+            head = tail;
+            tail = temp;
+            tail.next = null;
+        }
+
+        public void helper(Node node, int floor) {
+
+            if (node == null)
+                return;
+
+            helper(node.next, floor + 1);
+
+            if (floor > size / 2) {
+
+                Node temp = pleft.next;
+                pleft.next = node;
+                node.next = temp;
+                pleft = temp;
+            }
+
+            else if (floor == size / 2) {
+
+                tail = node;
+                node.next = null;
+            }
+        }
+
+        Node pleft;
+
+        public void fold() {
+            // write your code here
+            pleft = head;
+
+            helper(head, 0);
         }
     }
 
@@ -394,9 +439,10 @@ public class display_reverse {
         int b = Integer.parseInt(br.readLine());
 
         l1.display();
-        l1.displayReverse();
-        l1.addLast(a);
-        l1.addFirst(b);
+        l1.fold();
+        l1.display();
+        l1.addFirst(a);
+        l1.addLast(b);
         l1.display();
     }
 }

@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class is_palindrome {
+public class reverse_list_recursive {
     public static class Node {
         int data;
         Node next;
@@ -377,45 +377,31 @@ public class is_palindrome {
         }
 
         private void reversePRHelper(Node node) {
-            if (node == tail) {
-                return;
-            }
-            reversePRHelper(node.next);
-            node.next.next = node;
-        }
-
-        public void reversePR() {
-            reversePRHelper(head);
-            Node temp = head;
-            head = tail;
-            tail = temp;
-            tail.next = null;
-        }
-
-        public boolean helper(Node node) {
-
+            // write your code here
             if (node == null)
-                return true;
+                return;
 
-            boolean res = helper(node.next);
+            reversePRHelper(node.next);
 
-            if (!res || pleft.data != node.data) {
-                return false;
+            if (node == tail) {
+
             }
 
             else {
-                pleft = pleft.next;
-                return true;
+
+                node.next.next = node;
             }
         }
 
-        Node pleft;
-
-        public boolean IsPalindrome() {
+        public void reversePR() {
             // write your code here
+            reversePRHelper(head);
 
-            pleft = head;
-            return helper(head);
+            head.next = null;
+            Node temp = head;
+            head = tail;
+            tail = temp;
+
         }
     }
 
@@ -430,6 +416,13 @@ public class is_palindrome {
             l1.addLast(d);
         }
 
-        System.out.println(l1.IsPalindrome());
+        int a = Integer.parseInt(br.readLine());
+        int b = Integer.parseInt(br.readLine());
+
+        l1.display();
+        l1.reversePR();
+        l1.addLast(a);
+        l1.addFirst(b);
+        l1.display();
     }
 }
