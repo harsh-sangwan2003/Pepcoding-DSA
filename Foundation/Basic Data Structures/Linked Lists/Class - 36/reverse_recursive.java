@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class remove_duplicates_1 {
+public class reverse_recursive {
     public static class Node {
         int data;
         Node next;
@@ -280,21 +280,131 @@ public class remove_duplicates_1 {
         }
 
         public void removeDuplicates() {
+            LinkedList res = new LinkedList();
+
+            while (this.size() > 0) {
+                int val = this.getFirst();
+                this.removeFirst();
+
+                if (res.size() == 0 || val != res.tail.data) {
+                    res.addLast(val);
+                }
+            }
+
+            this.head = res.head;
+            this.tail = res.tail;
+            this.size = res.size;
+        }
+
+        public void oddEven() {
+            LinkedList odd = new LinkedList();
+            LinkedList even = new LinkedList();
+
+            while (this.size > 0) {
+                int val = this.getFirst();
+                this.removeFirst();
+
+                if (val % 2 == 0) {
+                    even.addLast(val);
+                } else {
+                    odd.addLast(val);
+                }
+            }
+
+            if (odd.size > 0 && even.size > 0) {
+                odd.tail.next = even.head;
+
+                this.head = odd.head;
+                this.tail = even.tail;
+                this.size = odd.size + even.size;
+            } else if (odd.size > 0) {
+                this.head = odd.head;
+                this.tail = odd.tail;
+                this.size = odd.size;
+            } else if (even.size > 0) {
+                this.head = even.head;
+                this.tail = even.tail;
+                this.size = even.size;
+            }
+        }
+
+        public void kReverse(int k) {
+            LinkedList prev = null;
+
+            while (this.size > 0) {
+                LinkedList curr = new LinkedList();
+
+                if (this.size >= k) {
+                    for (int i = 0; i < k; i++) {
+                        int val = this.getFirst();
+                        this.removeFirst();
+                        curr.addFirst(val);
+                    }
+                } else {
+                    int sz = this.size;
+                    for (int i = 0; i < sz; i++) {
+                        int val = this.getFirst();
+                        this.removeFirst();
+                        curr.addLast(val);
+                    }
+                }
+
+                if (prev == null) {
+                    prev = curr;
+                } else {
+                    prev.tail.next = curr.head;
+                    prev.tail = curr.tail;
+                    prev.size += curr.size;
+                }
+            }
+
+            this.head = prev.head;
+            this.tail = prev.tail;
+            this.size = prev.size;
+        }
+
+        private void displayReverseHelper(Node node) {
+            if (node == null) {
+                return;
+            }
+            displayReverseHelper(node.next);
+            System.out.print(node.data + " ");
+        }
+
+        public void displayReverse() {
+            displayReverseHelper(head);
+            System.out.println();
+        }
+
+        private void reversePRHelper(Node node) {
             // write your code here
 
-            if (this.head == null || this.head.next == null)
+            if (node == null)
                 return;
 
-            Node temp = this.head;
+            reversePRHelper(node.next);
 
-            while (temp != null && temp.next != null) {
+            if (node == tail) {
 
-                if (temp.data == temp.next.data)
-                    temp.next = temp.next.next;
-
-                else
-                    temp = temp.next;
             }
+
+            else {
+
+                node.next.next = node;
+            }
+
+        }
+
+        public void reversePR() {
+            // write your code here
+            reversePRHelper(this.head);
+
+            this.head.next = null;
+
+            Node temp = this.head;
+            this.head = this.tail;
+            this.tail = temp;
+
         }
     }
 
@@ -309,8 +419,13 @@ public class remove_duplicates_1 {
             l1.addLast(d);
         }
 
+        int a = Integer.parseInt(br.readLine());
+        int b = Integer.parseInt(br.readLine());
+
         l1.display();
-        l1.removeDuplicates();
+        l1.reversePR();
+        l1.addLast(a);
+        l1.addFirst(b);
         l1.display();
     }
 }

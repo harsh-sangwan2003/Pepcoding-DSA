@@ -285,21 +285,21 @@ public class remove_duplicates_2 {
             if (this.head == null || this.head.next == null)
                 return;
 
-            LinkedList res = new LinkedList();
+            LinkedList list = new LinkedList();
 
             while (this.size != 0) {
 
                 int val = this.getFirst();
                 this.removeFirst();
 
-                if (res.size == 0 || res.tail.data != val)
-                    res.addLast(val);
-
+                if (list.size == 0 || list.tail.data != val)
+                    list.addLast(val);
             }
 
-            this.size = res.size;
-            this.head = res.head;
-            this.tail = res.tail;
+            this.head = list.head;
+            this.tail = list.tail;
+            this.size = list.size;
+
         }
     }
 

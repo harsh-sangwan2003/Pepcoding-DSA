@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class odd_even_list {
+public class is_palindrome {
     public static class Node {
         int data;
         Node next;
@@ -297,47 +297,125 @@ public class odd_even_list {
         }
 
         public void oddEven() {
-            // write your code here
-
-            if (this.head == null || this.head.next == null)
-                return;
-
             LinkedList odd = new LinkedList();
             LinkedList even = new LinkedList();
 
-            while (this.size != 0) {
-
+            while (this.size > 0) {
                 int val = this.getFirst();
                 this.removeFirst();
 
-                if (val % 2 == 0)
+                if (val % 2 == 0) {
                     even.addLast(val);
-
-                else
+                } else {
                     odd.addLast(val);
+                }
             }
 
-            if (odd.head == null) {
+            if (odd.size > 0 && even.size > 0) {
+                odd.tail.next = even.head;
 
+                this.head = odd.head;
+                this.tail = even.tail;
+                this.size = odd.size + even.size;
+            } else if (odd.size > 0) {
+                this.head = odd.head;
+                this.tail = odd.tail;
+                this.size = odd.size;
+            } else if (even.size > 0) {
                 this.head = even.head;
                 this.tail = even.tail;
                 this.size = even.size;
             }
+        }
 
-            else if (even.head == null) {
+        public void kReverse(int k) {
+            LinkedList prev = null;
 
-                this.head = odd.head;
-                this.tail = odd.tail;
-                this.size = odd.size;
+            while (this.size > 0) {
+                LinkedList curr = new LinkedList();
+
+                if (this.size >= k) {
+                    for (int i = 0; i < k; i++) {
+                        int val = this.getFirst();
+                        this.removeFirst();
+                        curr.addFirst(val);
+                    }
+                } else {
+                    int sz = this.size;
+                    for (int i = 0; i < sz; i++) {
+                        int val = this.getFirst();
+                        this.removeFirst();
+                        curr.addLast(val);
+                    }
+                }
+
+                if (prev == null) {
+                    prev = curr;
+                } else {
+                    prev.tail.next = curr.head;
+                    prev.tail = curr.tail;
+                    prev.size += curr.size;
+                }
+            }
+
+            this.head = prev.head;
+            this.tail = prev.tail;
+            this.size = prev.size;
+        }
+
+        private void displayReverseHelper(Node node) {
+            if (node == null) {
+                return;
+            }
+            displayReverseHelper(node.next);
+            System.out.print(node.data + " ");
+        }
+
+        public void displayReverse() {
+            displayReverseHelper(head);
+            System.out.println();
+        }
+
+        private void reversePRHelper(Node node) {
+            if (node == tail) {
+                return;
+            }
+            reversePRHelper(node.next);
+            node.next.next = node;
+        }
+
+        public void reversePR() {
+            reversePRHelper(head);
+            Node temp = head;
+            head = tail;
+            tail = temp;
+            tail.next = null;
+        }
+
+        public boolean helper(Node node) {
+
+            if (node == null)
+                return true;
+
+            boolean res = helper(node.next);
+
+            if (!res || pleft.data != node.data) {
+                return false;
             }
 
             else {
-
-                this.head = odd.head;
-                odd.tail.next = even.head;
-                this.tail = even.tail;
-                this.size = even.size + odd.size;
+                pleft = pleft.next;
+                return true;
             }
+        }
+
+        Node pleft;
+
+        public boolean IsPalindrome() {
+            // write your code here
+
+            pleft = head;
+            return helper(head);
         }
     }
 
@@ -352,14 +430,6 @@ public class odd_even_list {
             l1.addLast(d);
         }
 
-        int a = Integer.parseInt(br.readLine());
-        int b = Integer.parseInt(br.readLine());
-
-        l1.display();
-        l1.oddEven();
-        l1.display();
-        l1.addFirst(a);
-        l1.addLast(b);
-        l1.display();
+        System.out.println(l1.IsPalindrome());
     }
 }

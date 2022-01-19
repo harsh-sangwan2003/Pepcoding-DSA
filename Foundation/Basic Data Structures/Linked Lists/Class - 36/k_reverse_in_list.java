@@ -334,7 +334,7 @@ public class k_reverse_in_list {
             if (k > this.size)
                 return;
 
-            LinkedList prev = new LinkedList();
+            LinkedList res = new LinkedList();
 
             while (this.size >= k) {
 
@@ -348,29 +348,27 @@ public class k_reverse_in_list {
                     list.addFirst(val);
                 }
 
-                if (prev.size == 0) {
-
-                    prev = list;
-                }
+                if (res.size == 0)
+                    res = list;
 
                 else {
 
-                    prev.tail.next = list.head;
-                    prev.tail = list.tail;
-                    prev.size += list.size;
+                    res.tail.next = list.head;
+                    res.tail = list.tail;
+                    res.size += list.size;
                 }
             }
 
             if (this.size > 0) {
 
-                prev.tail.next = this.head;
-                prev.tail = this.tail;
-                prev.size += this.size;
+                res.tail.next = this.head;
+                res.tail = this.tail;
+                res.size += this.size;
             }
 
-            this.head = prev.head;
-            this.tail = prev.tail;
-            this.size = prev.size;
+            this.head = res.head;
+            this.tail = res.tail;
+            this.size = res.size;
         }
     }
 

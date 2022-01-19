@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class remove_duplicates_1 {
+public class even_odd_list {
     public static class Node {
         int data;
         Node next;
@@ -280,20 +280,63 @@ public class remove_duplicates_1 {
         }
 
         public void removeDuplicates() {
+            LinkedList res = new LinkedList();
+
+            while (this.size() > 0) {
+                int val = this.getFirst();
+                this.removeFirst();
+
+                if (res.size() == 0 || val != res.tail.data) {
+                    res.addLast(val);
+                }
+            }
+
+            this.head = res.head;
+            this.tail = res.tail;
+            this.size = res.size;
+        }
+
+        public void oddEven() {
             // write your code here
 
-            if (this.head == null || this.head.next == null)
+            if (this.size == 0 || this.size == 1)
                 return;
 
-            Node temp = this.head;
+            LinkedList odd = new LinkedList();
+            LinkedList even = new LinkedList();
 
-            while (temp != null && temp.next != null) {
+            while (this.size() != 0) {
 
-                if (temp.data == temp.next.data)
-                    temp.next = temp.next.next;
+                int val = this.getFirst();
+                this.removeFirst();
+
+                if (val % 2 == 0)
+                    even.addLast(val);
 
                 else
-                    temp = temp.next;
+                    odd.addLast(val);
+            }
+
+            if (odd.size == 0) {
+
+                this.head = even.head;
+                this.tail = even.tail;
+                this.size = even.size;
+            }
+
+            else if (even.size == 0) {
+
+                this.head = odd.head;
+                this.tail = odd.tail;
+                this.size = odd.size;
+            }
+
+            else {
+
+                this.head = odd.head;
+                odd.tail.next = even.head;
+                this.tail = even.tail;
+                this.size = odd.size + even.size;
             }
         }
     }
@@ -309,8 +352,14 @@ public class remove_duplicates_1 {
             l1.addLast(d);
         }
 
+        int a = Integer.parseInt(br.readLine());
+        int b = Integer.parseInt(br.readLine());
+
         l1.display();
-        l1.removeDuplicates();
+        l1.oddEven();
+        l1.display();
+        l1.addFirst(a);
+        l1.addLast(b);
         l1.display();
     }
 }
