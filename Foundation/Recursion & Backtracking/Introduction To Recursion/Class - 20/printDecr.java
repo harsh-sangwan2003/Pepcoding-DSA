@@ -1,25 +1,23 @@
 import java.util.*;
 
-public class printDecrIncr {
+public class printDecr {
 
     public static void main(String[] args) throws Exception {
         // write your code here
         Scanner scn = new Scanner(System.in);
-
         int n = scn.nextInt();
-        pdi(n);
 
+        printDecreasing(n);
         scn.close();
     }
 
-    public static void pdi(int n) {
+    public static void printDecreasing(int n) {
 
         if (n == 0)
             return;
 
         System.out.println(n);
-        pdi(n - 1);
-        System.out.println(n);
+        printDecreasing(n - 1);
     }
 
 }
