@@ -2,34 +2,37 @@ import java.util.Scanner;
 
 public class last_index {
 
-    public static int find(int[] arr, int idx, int target) {
+    public static void main(String[] args) throws Exception {
+        // write your code here
+
+        Scanner scn = new Scanner(System.in);
+
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = scn.nextInt();
+
+        int x = scn.nextInt();
+        int lastIdx = lastIndex(arr, 0, x);
+
+        System.out.println(lastIdx);
+
+        scn.close();
+    }
+
+    public static int lastIndex(int[] arr, int idx, int x) {
 
         if (idx == arr.length)
             return -1;
 
-        int res = find(arr, idx + 1, target);
+        int rres = lastIndex(arr, idx + 1, x);
 
-        if (res == -1 && arr[idx] == target)
+        if (rres == -1 && arr[idx] == x)
             return idx;
 
         else
-            return res;
-
+            return rres;
     }
 
-    public static void main(String[] args) {
-
-        Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
-
-        int[] arr = new int[n];
-        for (int i = 0; i < arr.length; i++)
-            arr[i] = scn.nextInt();
-
-        int target = scn.nextInt();
-
-        int idx = find(arr, 0, target);
-        System.out.println(idx);
-        scn.close();
-    }
 }

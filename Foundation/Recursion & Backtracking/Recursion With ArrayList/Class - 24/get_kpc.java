@@ -1,7 +1,7 @@
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
 
-public class get_KPC {
+public class get_kpc {
 
     public static void main(String[] args) throws Exception {
 
@@ -15,7 +15,7 @@ public class get_KPC {
         scn.close();
     }
 
-    public static String[] codes = { ".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz" };
+    private static String[] codes = { ".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz" };
 
     public static ArrayList<String> getKPC(String str) {
 
@@ -29,8 +29,8 @@ public class get_KPC {
         char ch = str.charAt(0);
         String ros = str.substring(1);
 
-        ArrayList<String> mres = new ArrayList<>();
         ArrayList<String> rres = getKPC(ros);
+        ArrayList<String> mres = new ArrayList<>();
 
         for (int i = 0; i < codes[ch - '0'].length(); i++) {
 

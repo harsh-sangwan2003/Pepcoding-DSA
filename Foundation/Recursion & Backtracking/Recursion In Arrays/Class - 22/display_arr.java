@@ -1,10 +1,9 @@
 import java.util.Scanner;
 
-public class first_index {
+public class display_arr {
 
     public static void main(String[] args) throws Exception {
         // write your code here
-
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
@@ -12,24 +11,18 @@ public class first_index {
         for (int i = 0; i < arr.length; i++)
             arr[i] = scn.nextInt();
 
-        int x = scn.nextInt();
-
-        int idx = firstIndex(arr, 0, x);
-        System.out.println(idx);
+        displayArr(arr, 0);
 
         scn.close();
     }
 
-    public static int firstIndex(int[] arr, int idx, int x) {
+    public static void displayArr(int[] arr, int idx) {
 
         if (idx == arr.length)
-            return -1;
+            return;
 
-        if (arr[idx] == x)
-            return idx;
-
-        else
-            return firstIndex(arr, idx + 1, x);
+        System.out.println(arr[idx]);
+        displayArr(arr, idx + 1);
     }
 
 }

@@ -1,53 +1,48 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class all_indices {
 
-    public static int[] find(int[] arr, int idx, int target, int fsf) {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int[] arr = new int[n];
 
-        if (idx == arr.length - 1)
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(br.readLine());
+        }
+        int x = Integer.parseInt(br.readLine());
+        int[] iarr = allIndices(arr, x, 0, 0);
+
+        if (iarr.length == 0) {
+            System.out.println();
+            return;
+        }
+
+        for (int i = 0; i < iarr.length; i++) {
+            System.out.println(iarr[i]);
+        }
+    }
+
+    public static int[] allIndices(int[] arr, int x, int idx, int fsf) {
+        // write ur code here
+        if (idx == arr.length)
             return new int[fsf];
 
         int[] iarr;
 
-        if (arr[idx] == target) {
+        if (arr[idx] == x) {
 
-            iarr = find(arr, idx + 1, target, fsf + 1);
+            iarr = allIndices(arr, x, idx + 1, fsf + 1);
             iarr[fsf] = idx;
         }
 
-        else
-            iarr = find(arr, idx + 1, target, fsf);
+        else {
+
+            iarr = allIndices(arr, x, idx + 1, fsf);
+        }
 
         return iarr;
     }
 
-    public static void display(int[] arr) {
-
-        for (int i = 0; i < arr.length; i++)
-            System.out.println(arr[i]);
-    }
-
-    public static void main(String[] args) {
-
-        Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
-
-        int[] arr = new int[n];
-        for (int i = 0; i < arr.length; i++) {
-
-            arr[i] = scn.nextInt();
-        }
-
-        int target = scn.nextInt();
-        int[] ans = find(arr, 0, target, 0);
-
-        if (ans.length == 0) {
-
-            System.out.println("");
-            System.exit(0);
-        }
-        
-        display(ans);
-        scn.close();
-    }
 }

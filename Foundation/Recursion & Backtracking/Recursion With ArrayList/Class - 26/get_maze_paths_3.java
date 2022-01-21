@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class get_maze_paths_2 {
+public class get_maze_paths_3 {
 
     public static void main(String[] args) throws Exception {
 
@@ -21,6 +21,10 @@ public class get_maze_paths_2 {
     // sc - source column
     // dr - destination row
     // dc - destination column
+
+    static int[][] dir = { { 0, 1 }, { 1, 0 } };
+    static String[] dirName = { "h", "v" };
+
     public static ArrayList<String> getMazePaths(int sr, int sc, int dr, int dc) {
 
         if (sr == dr && sc == dc) {
@@ -31,20 +35,22 @@ public class get_maze_paths_2 {
         }
 
         ArrayList<String> mres = new ArrayList<>();
-        ArrayList<String> hpaths = new ArrayList<>();
-        ArrayList<String> vpaths = new ArrayList<>();
 
-        if (sc + 1 <= dc)
-            hpaths = getMazePaths(sr, sc + 1, dr, dc);
+        for (int i = 0; i < dir.length; i++) {
 
-        for (String s : hpaths)
-            mres.add("h" + s);
+            int r = dir[i][0] + sr;
+            int c = dir[i][1] + sc;
 
-        if (sr + 1 <= dr)
-            vpaths = getMazePaths(sr + 1, sc, dr, dc);
+            ArrayList<String> paths = new ArrayList<>();
 
-        for (String s : vpaths)
-            mres.add("v" + s);
+            if (r <= dr && c <= dc)
+                paths = getMazePaths(r, c, dr, dc);
+
+            for (String s : paths) {
+
+                mres.add(dirName[i] + s);
+            }
+        }
 
         return mres;
     }

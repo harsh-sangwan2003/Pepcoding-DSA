@@ -1,12 +1,23 @@
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class get_subsequence {
 
-    public static ArrayList<String> subsequence(String str) {
+    public static void main(String[] args) throws Exception {
+
+        Scanner scn = new Scanner(System.in);
+        String str = scn.nextLine();
+
+        ArrayList<String> res = gss(str);
+
+        System.out.println(res);
+
+        scn.close();
+    }
+
+    public static ArrayList<String> gss(String str) {
 
         if (str.length() == 0) {
-
             ArrayList<String> bres = new ArrayList<>();
             bres.add("");
             return bres;
@@ -15,7 +26,7 @@ public class get_subsequence {
         char ch = str.charAt(0);
         String ros = str.substring(1);
 
-        ArrayList<String> rres = subsequence(ros);
+        ArrayList<String> rres = gss(ros);
         ArrayList<String> mres = new ArrayList<>();
 
         for (String s : rres) {
@@ -31,15 +42,4 @@ public class get_subsequence {
         return mres;
     }
 
-    public static void main(String[] args) {
-
-        Scanner scn = new Scanner(System.in);
-
-        String str = scn.nextLine();
-
-        ArrayList<String> ans = subsequence(str);
-        System.out.println(ans);
-
-        scn.close();
-    }
 }

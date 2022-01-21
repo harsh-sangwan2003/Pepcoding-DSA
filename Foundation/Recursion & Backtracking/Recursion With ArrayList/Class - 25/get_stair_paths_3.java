@@ -9,8 +9,9 @@ public class get_stair_paths_3 {
 
         int n = scn.nextInt();
 
-        ArrayList<String> paths = getStairPaths(n);
-        System.out.println(paths);
+        ArrayList<String> res = getStairPaths(n);
+
+        System.out.println(res);
 
         scn.close();
     }
@@ -18,7 +19,6 @@ public class get_stair_paths_3 {
     public static ArrayList<String> getStairPaths(int n) {
 
         if (n == 0) {
-
             ArrayList<String> bres = new ArrayList<>();
             bres.add("");
             return bres;
@@ -28,15 +28,13 @@ public class get_stair_paths_3 {
 
         for (int i = 1; i <= 3; i++) {
 
-            if (n - i >= 0) {
+            ArrayList<String> paths = new ArrayList<>();
 
-                ArrayList<String> paths = getStairPaths(n - i);
+            if (n - i >= 0)
+                paths = getStairPaths(n - i);
 
-                for (String s : paths) {
-
-                    mres.add(i + s);
-                }
-            }
+            for (String s : paths)
+                mres.add(i + s);
         }
 
         return mres;
