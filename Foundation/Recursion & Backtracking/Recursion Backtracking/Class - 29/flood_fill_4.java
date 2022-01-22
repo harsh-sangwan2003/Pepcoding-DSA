@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class flood_fill_3 {
+public class flood_fill_4 {
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
@@ -17,13 +17,11 @@ public class flood_fill_3 {
         scn.close();
     }
 
+    static int[][] dir = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
+    static String[] dirName = { "t", "l", "d", "r" };
+
     // asf -> answer so far
     public static void floodfill(int[][] maze, int sr, int sc, String asf) {
-
-        helper(maze, 0, 0, "");
-    }
-
-    public static void helper(int[][] maze, int sr, int sc, String asf) {
 
         if (sr == maze.length - 1 && sc == maze[0].length - 1) {
             System.out.println(asf);
@@ -32,17 +30,14 @@ public class flood_fill_3 {
 
         maze[sr][sc] = 1;
 
-        if (sr - 1 >= 0 && maze[sr - 1][sc] != 1)
-            helper(maze, sr - 1, sc, asf + "t");
+        for (int i = 0; i < dir.length; i++) {
 
-        if (sc - 1 >= 0 && maze[sr][sc - 1] != 1)
-            helper(maze, sr, sc - 1, asf + "l");
+            int r = sr + dir[i][0];
+            int c = sc + dir[i][1];
 
-        if (sr + 1 < maze.length && maze[sr + 1][sc] != 1)
-            helper(maze, sr + 1, sc, asf + "d");
-
-        if (sc + 1 < maze[0].length && maze[sr][sc + 1] != 1)
-            helper(maze, sr, sc + 1, asf + "r");
+            if (r >= 0 && c >= 0 && r < maze.length && c < maze[0].length && maze[r][c] != 1)
+                floodfill(maze, r, c, asf + dirName[i]);
+        }
 
         maze[sr][sc] = 0;
     }

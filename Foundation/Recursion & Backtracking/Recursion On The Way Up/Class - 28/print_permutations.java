@@ -1,33 +1,35 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class print_permutations {
 
-    public static void permutations(String str, String ans) {
+    public static void main(String[] args) throws Exception {
+
+        Scanner scn = new Scanner(System.in);
+
+        String str = scn.nextLine();
+
+        printPermutations(str, "");
+
+        scn.close();
+    }
+
+    public static void printPermutations(String str, String asf) {
 
         if (str.length() == 0) {
 
-            System.out.println(ans);
+            System.out.println(asf);
             return;
         }
 
         for (int i = 0; i < str.length(); i++) {
 
-            char ch = str.charAt(i);
             String left = str.substring(0, i);
             String right = str.substring(i + 1);
+
             String ros = left + right;
 
-            permutations(ros, ans + ch);
+            printPermutations(ros, asf + str.charAt(i));
         }
     }
 
-    public static void main(String[] args) {
-
-        Scanner scn = new Scanner(System.in);
-
-        String str = scn.nextLine();
-        permutations(str, "");
-
-        scn.close();
-    }
 }

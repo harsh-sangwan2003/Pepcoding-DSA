@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
-public class maze_path_jumps_2 {
+public class maze_jumps_2 {
 
     public static void main(String[] args) throws Exception {
 
         Scanner scn = new Scanner(System.in);
-
         int n = scn.nextInt();
         int m = scn.nextInt();
 
@@ -13,8 +12,13 @@ public class maze_path_jumps_2 {
         scn.close();
     }
 
-    public static int[][] dir = { { 0, 1 }, { 1, 0 }, { 1, 1 } };
-    public static char[] dirName = { 'h', 'v', 'd' };
+    // sr - source row
+    // sc - source column
+    // dr - destination row
+    // dc - destination column
+
+    static int[][] dir = { { 0, 1 }, { 1, 0 }, { 1, 1 } };
+    static String[] dirName = { "h", "v", "d" };
 
     public static void printMazePaths(int sr, int sc, int dr, int dc, String psf) {
 
@@ -31,10 +35,8 @@ public class maze_path_jumps_2 {
                 int r = sr + (dir[i][0] * ms);
                 int c = sc + (dir[i][1] * ms);
 
-                if (r <= dr && c <= dc) {
-
+                if (r <= dr && c <= dc)
                     printMazePaths(r, c, dr, dc, psf + dirName[i] + ms);
-                }
             }
         }
     }

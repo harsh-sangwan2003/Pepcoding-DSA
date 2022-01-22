@@ -2,11 +2,20 @@ import java.util.Scanner;
 
 public class print_encodings {
 
-    public static void encodings(String str, String ans) {
+    public static void main(String[] args) throws Exception {
+
+        Scanner scn = new Scanner(System.in);
+        String str = scn.nextLine();
+
+        printEncodings(str, "");    
+        scn.close();
+    }
+
+    public static void printEncodings(String str, String asf) {
 
         if (str.length() == 0) {
 
-            System.out.println(ans);
+            System.out.println(asf);
             return;
         }
 
@@ -14,32 +23,25 @@ public class print_encodings {
             return;
 
         char ch = str.charAt(0);
+        String ros = str.substring(1);
         int chv = ch - '0';
         char code = (char) ('a' + chv - 1);
-        String ros = str.substring(1);
-        encodings(ros, ans + code);
 
-        if (str.length() > 1) {
+        printEncodings(ros, asf + code);
+
+        if (str.length() >= 2) {
 
             char ch2 = str.charAt(1);
+            String ros2 = str.substring(2);
             int chv2 = ch2 - '0';
-            int val = chv * 10 + chv2;
+            int chval = chv * 10 + chv2;
 
-            if (val <= 26) {
-                char finalCode = (char) ('a' + val - 1);
-                String ros2 = str.substring(2);
-                encodings(ros2, ans + finalCode);
+            if (chval <= 26) {
+
+                char code2 = (char) ('a' + chval - 1);
+                printEncodings(ros2, asf + code2);
             }
         }
     }
 
-    public static void main(String[] args) {
-
-        Scanner scn = new Scanner(System.in);
-        String str = scn.nextLine();
-
-        encodings(str, "");
-
-        scn.close();
-    }
 }

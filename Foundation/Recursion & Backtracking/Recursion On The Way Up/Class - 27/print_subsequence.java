@@ -2,10 +2,19 @@ import java.util.Scanner;
 
 public class print_subsequence {
 
-    public static void subsequence(String str, String ans) {
+    public static void main(String[] args) throws Exception {
+
+        Scanner scn = new Scanner(System.in);
+        String str = scn.nextLine();
+
+        printSS(str, "");
+
+        scn.close();
+    }
+
+    public static void printSS(String str, String ans) {
 
         if (str.length() == 0) {
-
             System.out.println(ans);
             return;
         }
@@ -13,17 +22,8 @@ public class print_subsequence {
         char ch = str.charAt(0);
         String ros = str.substring(1);
 
-        subsequence(ros, ans + ch);
-        subsequence(ros, ans + "");
+        printSS(ros, ans + ch);
+        printSS(ros, ans);
     }
 
-    public static void main(String[] args) {
-
-        Scanner scn = new Scanner(System.in);
-
-        String str = scn.nextLine();
-        subsequence(str, "");
-
-        scn.close();
-    }
 }

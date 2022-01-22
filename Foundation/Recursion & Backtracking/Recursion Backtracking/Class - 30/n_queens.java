@@ -1,60 +1,57 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class n_queens {
 
-    public static void printNQueens(int[][] chess, String qsf, int r) {
+    public static void main(String[] args) throws Exception {
 
-        if (r == chess.length) {
+        Scanner scn = new Scanner(System.in);
 
+        int n = scn.nextInt();
+
+        int[][] chess = new int[n][n];
+
+        printNQueens(chess, "", 0);
+        scn.close();
+    }
+
+    public static void printNQueens(int[][] chess, String qsf, int row) {
+
+        if (row == chess.length) {
             System.out.println(qsf + ".");
             return;
         }
 
         for (int c = 0; c < chess.length; c++) {
 
-            if (isSafe(chess, r, c)) {
+            if (safe(chess, row, c)) {
 
-                chess[r][c] = 1;
-                printNQueens(chess, qsf + r + "-" + c + ", ", r + 1);
-                chess[r][c] = 0;
+                chess[row][c] = 1;
+                printNQueens(chess, qsf + row + "-" + c + ", ", row + 1);
+                chess[row][c] = 0;
             }
         }
     }
 
-    public static boolean isSafe(int[][] chess, int sr, int sc) {
+    public static boolean safe(int[][] chess, int row, int col) {
 
-        // Row
-        for (int r = sr - 1; r >= 0; r--) {
+        for (int r = row - 1; r >= 0; r--) {
 
-            if (chess[r][sc] == 1)
+            if (chess[r][col] == 1)
                 return false;
         }
 
-        // Diagonal
-        for (int r = sr - 1, c = sc - 1; r >= 0 && c >= 0; r--, c--) {
+        for (int r = row - 1, c = col - 1; r >= 0 && c >= 0; r--, c--) {
 
             if (chess[r][c] == 1)
                 return false;
         }
 
-        // Anti-diagonal
-        for (int r = sr - 1, c = sc + 1; r >= 0 && c < chess.length; r--, c++) {
+        for (int r = row - 1, c = col + 1; r >= 0 && c < chess.length; r--, c++) {
 
             if (chess[r][c] == 1)
                 return false;
         }
 
         return true;
-    }
-
-    public static void main(String[] args) {
-
-        Scanner scn = new Scanner(System.in);
-
-        int n = scn.nextInt();
-        int[][] chess = new int[n][n];
-
-        printNQueens(chess, "", 0);
-        scn.close();
     }
 }
