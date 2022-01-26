@@ -1,3 +1,6 @@
+// Time - O(n*m)
+// Space - O(n*m)
+
 import java.util.Scanner;
 
 public class maze_traversal_memo {
@@ -13,44 +16,37 @@ public class maze_traversal_memo {
         for (int i = 0; i < arr.length; i++) {
 
             for (int j = 0; j < arr[0].length; j++) {
-
                 arr[i][j] = scn.nextInt();
             }
         }
 
         int[][] dp = new int[n][m];
+        int ans = minCost(0, 0, arr, dp);
+        System.out.println(ans);
 
-        int cost = getCost(0, 0, arr, dp);
-
-        System.out.println(cost);
         scn.close();
     }
 
-    public static int getCost(int r, int c, int[][] arr, int[][] dp) {
+    public static int minCost(int sr, int sc, int[][] arr, int[][] dp) {
 
-        if (r == arr.length - 1 && c == arr[0].length - 1)
-            return dp[r][c] = arr[r][c];
+        if (sr == arr.length - 1 && sc == arr[0].length - 1)
+            return dp[sr][sc] = arr[sr][sc];
 
-        if (dp[r][c] != 0)
-            return dp[r][c];
+        if (dp[sr][sc] != 0)
+            return dp[sr][sc];
 
-        int cost = 0;
+        int cost = arr[sr][sc];
 
-        if (r + 1 < arr.length && c + 1 < arr[0].length) {
-            cost += (arr[r][c] + Math.min(getCost(r + 1, c, arr, dp), getCost(r, c + 1, arr, dp)));
-        }
+        if (sr + 1 < arr.length && sc + 1 < arr[0].length)
+            cost += Math.min(minCost(sr + 1, sc, arr, dp), minCost(sr, sc + 1, arr, dp));
 
-        else if (r + 1 < arr.length) {
+        else if (sr + 1 < arr.length)
+            cost += minCost(sr + 1, sc, arr, dp);
 
-            cost += arr[r][c] + getCost(r + 1, c, arr, dp);
-        }
+        else
+            cost += minCost(sr, sc + 1, arr, dp);
 
-        else {
-
-            cost += arr[r][c] + getCost(r, c + 1, arr, dp);
-        }
-
-        return dp[r][c] = cost;
+        return dp[sr][sc] = cost;
     }
 
 }

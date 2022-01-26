@@ -1,20 +1,20 @@
+// Time - O(n)
+// Space - O(n)
+
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class fib_memo {
 
     public static void main(String[] args) throws Exception {
         // write your code here
-
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
         int[] dp = new int[n + 1];
-        Arrays.fill(dp, -1);
 
         int ans = fib(n, dp);
-
         System.out.println(ans);
+
         scn.close();
     }
 
@@ -23,7 +23,7 @@ public class fib_memo {
         if (n <= 1)
             return dp[n] = n;
 
-        if (dp[n] != -1)
+        if (dp[n] != 0)
             return dp[n];
 
         int n_1 = fib(n - 1, dp);

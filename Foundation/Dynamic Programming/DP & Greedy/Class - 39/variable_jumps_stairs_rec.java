@@ -1,20 +1,23 @@
-import java.util.Scanner;
+// Time - O(n^n)
+// Space - O(n)
 
-public class variable_jumps_rec {
+import java.util.*;
+
+public class variable_jumps_stairs_rec {
 
     public static void main(String[] args) throws Exception {
         // write your code here
         Scanner scn = new Scanner(System.in);
 
         int n = scn.nextInt();
-
         int[] arr = new int[n];
-        for (int i = 0; i < arr.length; i++)
+
+        for (int i = 0; i < n; i++)
             arr[i] = scn.nextInt();
 
         int ans = countPaths(0, n, arr);
-        System.out.println(ans);
 
+        System.out.println(ans);
         scn.close();
     }
 
@@ -25,10 +28,8 @@ public class variable_jumps_rec {
 
         int count = 0;
 
-        for (int jump = 1; jump + src <= dest && jump <= arr[src]; jump++) {
-
+        for (int jump = 1; jump <= arr[src] && jump + src <= dest; jump++)
             count += countPaths(src + jump, dest, arr);
-        }
 
         return count;
     }

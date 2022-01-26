@@ -1,9 +1,9 @@
-// Time - O(2^n)
-// Space - O(n)
+// Time - O(n)
+// Space - O(1)
 
 import java.util.Scanner;
 
-public class fib_rec {
+public class fib_opt {
 
     public static void main(String[] args) throws Exception {
         // write your code here
@@ -18,13 +18,17 @@ public class fib_rec {
 
     public static int fib(int n) {
 
-        if (n <= 1)
-            return n;
+        int a = 0;
+        int b = 1;
 
-        int n_1 = fib(n - 1);
-        int n_2 = fib(n - 2);
+        for (int i = 1; i <= n; i++) {
 
-        return n_1 + n_2;
+            int c = a + b;
+            a = b;
+            b = c;
+        }
+
+        return a;
     }
 
 }

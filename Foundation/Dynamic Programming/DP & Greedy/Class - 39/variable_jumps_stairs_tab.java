@@ -1,21 +1,24 @@
+// Time - O(n^2)
+// Space - O(n)
+
 import java.util.Scanner;
 
-public class variable_jumps_tab {
+public class variable_jumps_stairs_tab {
 
     public static void main(String[] args) throws Exception {
         // write your code here
         Scanner scn = new Scanner(System.in);
 
         int n = scn.nextInt();
-
         int[] arr = new int[n];
-        for (int i = 0; i < arr.length; i++)
-            arr[i] = scn.nextInt();
 
         int[] dp = new int[n + 1];
-        int ans = countPaths(0, n, arr, dp);
-        System.out.println(ans);
+        for (int i = 0; i < n; i++)
+            arr[i] = scn.nextInt();
 
+        int ans = countPaths(0, n, arr, dp);
+
+        System.out.println(ans);
         scn.close();
     }
 
@@ -30,15 +33,13 @@ public class variable_jumps_tab {
 
             int count = 0;
 
-            for (int jump = 1; jump + src <= dest && jump <= arr[src]; jump++) {
-
+            for (int jump = 1; jump <= arr[src] && jump + src <= dest; jump++)
                 count += dp[src + jump];
-            }
 
             dp[src] = count;
         }
 
-        return dp[0];
+        return dp[SRC];
     }
 
 }
