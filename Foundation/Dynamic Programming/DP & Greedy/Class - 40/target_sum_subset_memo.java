@@ -39,8 +39,8 @@ public class target_sum_subset_memo {
             return dp[idx][sos] = false;
         }
 
-        if (dp[idx][sos] != false)
-            return dp[idx][sos];
+        if (dp[idx][sos])
+            return true;
 
         boolean op1 = targetSum(idx + 1, sos + arr[idx], tar, arr, dp);
         boolean op2 = targetSum(idx + 1, sos, tar, arr, dp);
