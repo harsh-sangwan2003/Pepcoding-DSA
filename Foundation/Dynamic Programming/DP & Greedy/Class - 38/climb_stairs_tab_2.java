@@ -3,7 +3,7 @@
 
 import java.util.Scanner;
 
-public class climb_stairs_memo {
+public class climb_stairs_tab_2 {
 
     public static void main(String[] args) throws Exception {
         // write your code here
@@ -20,24 +20,21 @@ public class climb_stairs_memo {
 
     public static int countPaths(int n, int[] dp) {
 
-        if (n == 0)
-            return dp[n] = 1;
+        dp[0] = 1;
 
-        if (dp[n] != 0)
-            return dp[n];
+        for (int i = 1; i < dp.length; i++) {
 
-        int count = 0;
+            if (i == 1)
+                dp[i] = dp[i - 1];
 
-        if (n - 1 >= 0)
-            count += countPaths(n - 1, dp);
+            else if (i == 2)
+                dp[i] = dp[i - 1] + dp[i - 2];
 
-        if (n - 2 >= 0)
-            count += countPaths(n - 2, dp);
+            else
+                dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];
+        }
 
-        if (n - 3 >= 0)
-            count += countPaths(n - 3, dp);
-
-        return dp[n] = count;
+        return dp[n];
     }
 
 }

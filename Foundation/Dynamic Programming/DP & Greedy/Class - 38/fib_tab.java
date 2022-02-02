@@ -1,5 +1,5 @@
-// Time - O(n)
-// Space - O(n)
+//Time - O(n)
+//Space - O(n)
 
 import java.util.Scanner;
 
@@ -12,13 +12,13 @@ public class fib_tab {
 
         int[] dp = new int[n + 1];
 
-        int ans = fib(n, dp);
-        System.out.println(ans);
+        int res = fibonacci(n, dp);
+        System.out.println(res);
 
         scn.close();
     }
 
-    public static int fib(int N, int[] dp) {
+    public static int fibonacci(int N, int[] dp) {
 
         for (int n = 0; n < dp.length; n++) {
 
@@ -27,7 +27,10 @@ public class fib_tab {
                 continue;
             }
 
-            dp[n] = dp[n - 1] + dp[n - 2];
+            int n_1 = dp[n - 1];
+            int n_2 = dp[n - 2];
+
+            dp[n] = n_1 + n_2;
         }
 
         return dp[N];

@@ -1,5 +1,5 @@
-// Time - O(n)
-// Space - O(n)
+//Time - O(n)
+//Space - O(n)
 
 import java.util.Scanner;
 
@@ -8,12 +8,12 @@ public class climb_stairs_tab {
     public static void main(String[] args) throws Exception {
         // write your code here
         Scanner scn = new Scanner(System.in);
+
         int n = scn.nextInt();
 
         int[] dp = new int[n + 1];
-
-        int ans = countPaths(n, dp);
-        System.out.println(ans);
+        int res = countPaths(n, dp);
+        System.out.println(res);
 
         scn.close();
     }

@@ -3,7 +3,7 @@
 
 import java.util.Scanner;
 
-public class fib_memo {
+public class fib_tab_2 {
 
     public static void main(String[] args) throws Exception {
         // write your code here
@@ -20,16 +20,14 @@ public class fib_memo {
 
     public static int fibonacci(int n, int[] dp) {
 
-        if (n <= 1)
-            return dp[n] = n;
+        dp[1] = 1;
 
-        if (dp[n] != 0)
-            return dp[n];
+        for (int i = 2; i < dp.length; i++) {
 
-        int n_1 = fibonacci(n - 1, dp);
-        int n_2 = fibonacci(n - 2, dp);
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
 
-        return dp[n] = n_1 + n_2;
+        return dp[n];
     }
 
 }

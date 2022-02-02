@@ -1,5 +1,5 @@
-// Time - O(3^n)
-// Space - O(n)
+//Time - O(3^n)
+//Space - O(n)
 
 import java.util.Scanner;
 
@@ -8,10 +8,11 @@ public class climb_stairs_rec {
     public static void main(String[] args) throws Exception {
         // write your code here
         Scanner scn = new Scanner(System.in);
+
         int n = scn.nextInt();
 
-        int ans = countPaths(n);
-        System.out.println(ans);
+        int res = countPaths(n);
+        System.out.println(res);
 
         scn.close();
     }
