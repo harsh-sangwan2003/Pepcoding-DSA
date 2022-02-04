@@ -1,5 +1,5 @@
-// Time - O(n^n)
-// Space - O(n)
+//Time -O(n^n)
+//Space -O(n)
 
 import java.util.Scanner;
 
@@ -8,16 +8,14 @@ public class climb_min_moves_rec {
     public static void main(String[] args) throws Exception {
         // write your code here
         Scanner scn = new Scanner(System.in);
-
         int n = scn.nextInt();
 
         int[] arr = new int[n];
-
         for (int i = 0; i < n; i++)
             arr[i] = scn.nextInt();
 
-        Integer ans = minMoves(0, n, arr);
-        System.out.println(ans);
+        Integer res = minMoves(0, n, arr);
+        System.out.println(res);
 
         scn.close();
     }
@@ -27,7 +25,7 @@ public class climb_min_moves_rec {
         if (src == dest)
             return 0;
 
-        int count = 0;
+        Integer moves = 0;
         int temp = Integer.MAX_VALUE;
 
         for (int jump = 1; jump <= arr[src] && jump + src <= dest; jump++) {
@@ -39,12 +37,13 @@ public class climb_min_moves_rec {
         }
 
         if (temp == Integer.MAX_VALUE)
-            return null;
+            moves = null;
 
         else
-            count = 1 + temp;
+            moves = 1 + temp;
 
-        return count;
+        return moves;
+
     }
 
 }

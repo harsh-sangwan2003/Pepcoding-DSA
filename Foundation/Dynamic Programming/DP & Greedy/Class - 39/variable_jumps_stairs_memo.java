@@ -1,24 +1,24 @@
-// Time - O(n^2)
-// Space - O(n)
+//Time - O(n^2)
+//Space - O(n)
 
 import java.util.Scanner;
 
-public class varaible_jumps_stairs_memo {
+public class variable_jumps_stairs_memo {
 
     public static void main(String[] args) throws Exception {
         // write your code here
         Scanner scn = new Scanner(System.in);
 
         int n = scn.nextInt();
-        int[] arr = new int[n];
 
-        int[] dp = new int[n + 1];
+        int[] arr = new int[n];
         for (int i = 0; i < n; i++)
             arr[i] = scn.nextInt();
 
-        int ans = countPaths(0, n, arr, dp);
+        int[] dp = new int[n + 1];
+        int res = countPaths(0, n, arr, dp);
+        System.out.println(res);
 
-        System.out.println(ans);
         scn.close();
     }
 
@@ -32,8 +32,10 @@ public class varaible_jumps_stairs_memo {
 
         int count = 0;
 
-        for (int jump = 1; jump <= arr[src] && jump + src <= dest; jump++)
+        for (int jump = 1; jump <= arr[src] && jump + src <= dest; jump++) {
+
             count += countPaths(src + jump, dest, arr, dp);
+        }
 
         return dp[src] = count;
     }
