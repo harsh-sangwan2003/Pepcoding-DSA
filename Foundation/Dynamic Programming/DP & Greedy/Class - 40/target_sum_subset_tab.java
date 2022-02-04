@@ -1,5 +1,5 @@
 // Time - O(n*target)
-// Space - O(n*target)
+// Spcae - O(n*target)
 
 import java.util.Scanner;
 
@@ -11,18 +11,16 @@ public class target_sum_subset_tab {
         int n = scn.nextInt();
 
         int[] arr = new int[n];
-        for (int i = 0; i < arr.length; i++) {
-
+        for (int i = 0; i < n; i++)
             arr[i] = scn.nextInt();
-        }
 
         int tar = scn.nextInt();
 
         boolean[][] dp = new boolean[n + 1][tar + 1];
 
-        boolean flag = targetSum(arr, dp);
+        boolean res = targetSum(arr, dp);
 
-        System.out.println(flag);
+        System.out.println(res);
         scn.close();
     }
 
@@ -31,25 +29,27 @@ public class target_sum_subset_tab {
         int n = dp.length;
         int m = dp[0].length;
 
-        for (int i = 0; i < n; i++) {
+        for (int r = 0; r < n; r++) {
 
-            for (int j = 0; j < m; j++) {
+            for (int c = 0; c < m; c++) {
 
-                if (j == 0)
-                    dp[i][j] = true;
+                if (c == 0)
+                    dp[r][c] = true;
 
-                else if (i == 0)
-                    dp[i][j] = false;
+                else if (r == 0)
+                    dp[r][c] = false;
 
                 else {
 
-                    boolean exclude = dp[i - 1][j];
+                    boolean exculde = dp[r - 1][c];
                     boolean include = false;
 
-                    if (j - arr[i - 1] >= 0)
-                        include = dp[i - 1][j - arr[i - 1]];
+                    if (c - arr[r - 1] >= 0) {
 
-                    dp[i][j] = (exclude || include);
+                        include = dp[r - 1][c - arr[r - 1]];
+                    }
+
+                    dp[r][c] = (include || exculde);
                 }
             }
         }
