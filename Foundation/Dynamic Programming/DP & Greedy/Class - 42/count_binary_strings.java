@@ -1,3 +1,6 @@
+//Time - O(n)
+//Space - O(1)
+
 import java.util.Scanner;
 
 public class count_binary_strings {
@@ -6,6 +9,14 @@ public class count_binary_strings {
         // write your code here
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
+
+        int ans = countBinary(n);
+        System.out.println(ans);
+
+        scn.close();
+    }
+
+    public static int countBinary(int n) {
 
         int oldZeroCount = 1;
         int oldOneCount = 1;
@@ -19,11 +30,8 @@ public class count_binary_strings {
             oldOneCount = newOneCount;
         }
 
-        int ans = oldZeroCount + oldOneCount;
-
-        System.out.println(ans);
-
-        scn.close();
+        int res = oldOneCount + oldZeroCount;
+        return res;
     }
 
 }

@@ -1,3 +1,6 @@
+//Time - O(n)
+//Space - O(1)
+
 import java.util.Scanner;
 
 public class arrange_buildings {
@@ -7,24 +10,30 @@ public class arrange_buildings {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        long oldBCount = 1;
-        long oldSCount = 1;
-
-        for (int i = 2; i <= n; i++) {
-
-            long newBCount = oldSCount;
-            long newSCount = oldBCount + oldSCount;
-
-            oldBCount = newBCount;
-            oldSCount = newSCount;
-        }
-
-        long ans = oldBCount + oldSCount;
-        ans = ans * ans;
-
+        long ans = countWays(n);
         System.out.println(ans);
 
         scn.close();
+    }
+
+    public static long countWays(int n) {
+
+        long oldSpaces = 1;
+        long oldBuildings = 1;
+
+        for (int i = 2; i <= n; i++) {
+
+            long newBuildings = oldSpaces;
+            long newSpaces = oldSpaces + oldBuildings;
+
+            oldBuildings = newBuildings;
+            oldSpaces = newSpaces;
+        }
+
+        long total = oldSpaces + oldBuildings;
+        total = total * total;
+
+        return total;
     }
 
 }

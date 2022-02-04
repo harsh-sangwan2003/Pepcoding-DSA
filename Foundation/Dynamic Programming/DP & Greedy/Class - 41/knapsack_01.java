@@ -1,3 +1,6 @@
+//Time - O(n*cap)
+//Time - O(n*cap)
+
 import java.util.Scanner;
 
 public class knapsack_01 {
@@ -17,13 +20,13 @@ public class knapsack_01 {
 
         int cap = scn.nextInt();
 
-        int res = maxScore(n, vals, wts, cap);
+        int res = knapsack(n, vals, wts, cap);
         System.out.println(res);
 
         scn.close();
     }
 
-    public static int maxScore(int n, int[] vals, int[] wts, int cap) {
+    public static int knapsack(int n, int[] vals, int[] wts, int cap) {
 
         int[][] dp = new int[n + 1][cap + 1];
 
@@ -34,10 +37,8 @@ public class knapsack_01 {
                 int exclude = dp[i - 1][j];
                 int include = 0;
 
-                if (j - wts[i - 1] >= 0) {
-
+                if (j - wts[i - 1] >= 0)
                     include = vals[i - 1] + dp[i - 1][j - wts[i - 1]];
-                }
 
                 dp[i][j] = Math.max(include, exclude);
             }

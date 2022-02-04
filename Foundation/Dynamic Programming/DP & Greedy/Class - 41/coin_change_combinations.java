@@ -1,9 +1,9 @@
 //Time - O(n*amt)
-//Time - O(amt)
+//Space - O(amt)
 
 import java.util.Scanner;
 
-public class coin_change_permutations {
+public class coin_change_combinations {
 
     public static void main(String[] args) throws Exception {
 
@@ -11,28 +11,29 @@ public class coin_change_permutations {
         int n = scn.nextInt();
 
         int[] coins = new int[n];
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
+
             coins[i] = scn.nextInt();
+        }
 
         int amt = scn.nextInt();
 
-        int res = coinPermutations(coins, amt);
+        int res = coinCombinations(coins, amt);
         System.out.println(res);
 
         scn.close();
     }
 
-    public static int coinPermutations(int[] coins, int amt) {
+    public static int coinCombinations(int[] coins, int amt) {
 
         int[] dp = new int[amt + 1];
         dp[0] = 1;
 
-        for (int i = 1; i < dp.length; i++) {
+        for (int i = 0; i < coins.length; i++) {
 
-            for (int j = 0; j < coins.length; j++) {
+            for (int j = coins[i]; j <= amt; j++) {
 
-                if (i - coins[j] >= 0)
-                    dp[i] += dp[i - coins[j]];
+                dp[j] += dp[j - coins[i]];
             }
         }
 
