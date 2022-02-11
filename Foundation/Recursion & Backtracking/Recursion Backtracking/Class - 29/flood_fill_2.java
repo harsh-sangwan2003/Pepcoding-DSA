@@ -1,3 +1,6 @@
+//Time - O(n^2)
+//Space - O(n^2)
+
 import java.util.*;
 
 public class flood_fill_2 {

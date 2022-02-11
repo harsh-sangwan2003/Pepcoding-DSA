@@ -1,3 +1,6 @@
+//Time - O(n)
+//Space - O(n)
+
 import java.util.Scanner;
 import java.util.ArrayList;
 

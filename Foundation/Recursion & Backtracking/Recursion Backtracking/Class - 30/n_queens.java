@@ -1,3 +1,6 @@
+//TIme - O(n!)
+//Space - O(n)
+
 import java.util.*;
 
 public class n_queens {

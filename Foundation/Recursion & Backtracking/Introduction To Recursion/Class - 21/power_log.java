@@ -1,3 +1,6 @@
+//Time - O(logn)
+//Space - O(logn)
+
 import java.util.Scanner;
 
 public class power_log {

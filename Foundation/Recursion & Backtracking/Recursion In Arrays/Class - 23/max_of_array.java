@@ -1,3 +1,6 @@
+//Time - O(n)
+//Space - O(n)
+
 import java.util.Scanner;
 
 public class max_of_array {
