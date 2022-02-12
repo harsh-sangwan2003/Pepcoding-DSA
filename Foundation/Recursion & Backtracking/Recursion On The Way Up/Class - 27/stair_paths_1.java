@@ -1,3 +1,6 @@
+//Time - O(3^n)
+//Space - O(n)
+
 import java.util.Scanner;
 
 public class stair_paths_1 {

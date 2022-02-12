@@ -1,3 +1,6 @@
+//Time - O(3^(n+m))
+//Space - O(n+m)
+
 import java.util.Scanner;
 
 public class maze_jumps_2 {

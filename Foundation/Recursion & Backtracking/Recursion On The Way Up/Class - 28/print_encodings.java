@@ -1,3 +1,6 @@
+//Time - O(2^n)
+//Space - O(n)
+
 import java.util.Scanner;
 
 public class print_encodings {
@@ -7,7 +10,7 @@ public class print_encodings {
         Scanner scn = new Scanner(System.in);
         String str = scn.nextLine();
 
-        printEncodings(str, "");    
+        printEncodings(str, "");
         scn.close();
     }
 
