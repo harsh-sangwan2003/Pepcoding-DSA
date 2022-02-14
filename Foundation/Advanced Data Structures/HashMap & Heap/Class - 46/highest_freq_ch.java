@@ -19,14 +19,16 @@ public class highest_freq_ch {
 
             char ch = str.charAt(i);
 
-            if (!map.containsKey(ch))
-                map.put(ch, 1);
+            // if (!map.containsKey(ch))
+            // map.put(ch, 1);
 
-            else {
+            // else {
 
-                int val = map.get(ch);
-                map.put(ch, val + 1);
-            }
+            // int val = map.get(ch);
+            // map.put(ch, val + 1);
+            // }
+
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
 
         Set<Character> set = map.keySet();
