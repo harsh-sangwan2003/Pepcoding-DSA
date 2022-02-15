@@ -30,17 +30,10 @@ public class get_common_ele1 {
 
         for (int i = 0; i < a2.length; i++) {
 
-            int val = a2[i];
+            if (map.containsKey(a2[i])) {
 
-            if (map.containsKey(val)) {
-
-                int occ = map.get(val);
-
-                if (occ == 1) {
-
-                    map.put(val, 0);
-                    System.out.println(val);
-                }
+                System.out.println(a2[i]);
+                map.remove(a2[i]);
             }
 
         }
