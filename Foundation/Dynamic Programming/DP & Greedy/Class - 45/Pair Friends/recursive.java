@@ -21,10 +21,7 @@ public class recursive {
         if (n <= 2)
             return n;
 
-        int single = pairFriends(n - 1);
-        int pair = pairFriends(n - 2);
-
-        return single + (n - 1) * pair;
+        return pairFriends(n - 1) + (n - 1) * pairFriends(n - 2);
     }
 
 }

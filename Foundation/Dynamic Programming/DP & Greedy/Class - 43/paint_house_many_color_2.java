@@ -1,5 +1,5 @@
-//Time - O(n*k)
-//Space - O(n*k)
+//Time - O(n^k*2)
+//Space - O(1)
 
 import java.util.Scanner;
 
@@ -20,33 +20,30 @@ public class paint_house_many_color_2 {
             }
         }
 
-        int res = paintHouse(arr);
+        int res = minCost(arr);
         System.out.println(res);
 
         scn.close();
     }
 
-    public static int paintHouse(int[][] arr) {
+    public static int minCost(int[][] arr) {
 
         int n = arr.length;
-        int k = arr[0].length;
-
-        int[][] dp = new int[n][k];
+        int m = arr[0].length;
 
         int fmin = Integer.MAX_VALUE;
         int smin = Integer.MAX_VALUE;
 
-        for (int col = 0; col < k; col++) {
-            dp[0][col] = arr[0][col];
+        for (int j = 0; j < m; j++) {
 
-            if (arr[0][col] < fmin) {
+            if (arr[0][j] < fmin) {
 
                 smin = fmin;
-                fmin = arr[0][col];
+                fmin = arr[0][j];
             }
 
-            else if (arr[0][col] < smin)
-                smin = arr[0][col];
+            else if (arr[0][j] < smin)
+                smin = arr[0][j];
         }
 
         for (int i = 1; i < n; i++) {
@@ -54,22 +51,22 @@ public class paint_house_many_color_2 {
             int nfmin = Integer.MAX_VALUE;
             int nsmin = Integer.MAX_VALUE;
 
-            for (int j = 0; j < k; j++) {
+            for (int j = 0; j < m; j++) {
 
-                if (dp[i - 1][j] == fmin)
-                    dp[i][j] = arr[i][j] + smin;
+                if (fmin == arr[i - 1][j])
+                    arr[i][j] += smin;
 
                 else
-                    dp[i][j] = arr[i][j] + fmin;
+                    arr[i][j] += fmin;
 
-                if (dp[i][j] < nfmin) {
+                if (arr[i][j] < nfmin) {
 
                     nsmin = nfmin;
-                    nfmin = dp[i][j];
+                    nfmin = arr[i][j];
                 }
 
-                else if (dp[i][j] < nsmin)
-                    nsmin = dp[i][j];
+                else if (arr[i][j] < nsmin)
+                    nsmin = arr[i][j];
             }
 
             fmin = nfmin;

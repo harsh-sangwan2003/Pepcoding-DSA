@@ -1,5 +1,5 @@
-//Time- O(n)
-//Space- O(1)
+//Time - O(n)
+//Space - O(1)
 
 import java.util.Scanner;
 
@@ -10,14 +10,13 @@ public class opt {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        int ways = tiling(n);
-
-        System.out.println(ways);
+        int res = countWays(n);
+        System.out.println(res);
 
         scn.close();
     }
 
-    public static int tiling(int n) {
+    public static int countWays(int n) {
 
         int a = 1;
         int b = 2;

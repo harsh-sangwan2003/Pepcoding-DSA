@@ -11,13 +11,13 @@ public class recursive {
         int n = scn.nextInt();
         int m = scn.nextInt();
 
-        int ways = tiling(n, m);
-        System.out.println(ways);
+        int res = countWays(n, m);
+        System.out.println(res);
 
         scn.close();
     }
 
-    public static int tiling(int n, int m) {
+    public static int countWays(int n, int m) {
 
         if (m > n)
             return 1;
@@ -25,8 +25,6 @@ public class recursive {
         else if (m == n)
             return 2;
 
-        else
-            return tiling(n - 1, m) + tiling(n - m, m);
-
+        return countWays(n - 1, m) + countWays(n - m, m);
     }
 }

@@ -3,7 +3,7 @@
 
 import java.util.Scanner;
 
-public class memoised {
+public class memo {
 
     public static void main(String[] args) throws Exception {
 
@@ -12,14 +12,13 @@ public class memoised {
 
         int[] dp = new int[n + 1];
 
-        int ways = tiling(n, dp);
-
-        System.out.println(ways);
+        int res = countWays(n, dp);
+        System.out.println(res);
 
         scn.close();
     }
 
-    public static int tiling(int n, int[] dp) {
+    public static int countWays(int n, int[] dp) {
 
         if (n <= 2)
             return dp[n] = n;
@@ -27,9 +26,9 @@ public class memoised {
         if (dp[n] != 0)
             return dp[n];
 
-        int vways = tiling(n - 1, dp);
-        int hways = tiling(n - 2, dp);
+        int n_1 = countWays(n - 1, dp);
+        int n_2 = countWays(n - 2, dp);
 
-        return dp[n] = vways + hways;
+        return dp[n] = n_1 + n_2;
     }
 }

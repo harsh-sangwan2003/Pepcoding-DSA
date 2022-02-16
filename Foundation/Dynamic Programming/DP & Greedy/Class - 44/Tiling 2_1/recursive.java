@@ -10,20 +10,20 @@ public class recursive {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        int ways = tiling(n);
-        System.out.println(ways);
+        int res = countWays(n);
+        System.out.println(res);
 
         scn.close();
     }
 
-    public static int tiling(int n) {
+    public static int countWays(int n) {
 
         if (n <= 2)
             return n;
 
-        int vways = tiling(n - 1);
-        int hways = tiling(n - 2);
+        int n_1 = countWays(n - 1);
+        int n_2 = countWays(n - 2);
 
-        return vways + hways;
+        return n_1 + n_2;
     }
 }

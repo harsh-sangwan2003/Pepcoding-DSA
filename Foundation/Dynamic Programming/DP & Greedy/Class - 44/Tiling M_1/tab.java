@@ -1,9 +1,9 @@
-
 //Time - O(n)
 //Space - O(n)
+
 import java.util.Scanner;
 
-public class tab_2 {
+public class tab {
 
     public static void main(String[] args) throws Exception {
 
@@ -11,17 +11,17 @@ public class tab_2 {
         int n = scn.nextInt();
         int m = scn.nextInt();
 
-        int[] dp = new int[n + 1];
-
-        int ways = tiling(n, m, dp);
-        System.out.println(ways);
+        int res = countWays(n, m);
+        System.out.println(res);
 
         scn.close();
     }
 
-    public static int tiling(int n, int m, int[] dp) {
+    public static int countWays(int n, int m) {
 
-        for (int i = 0; i < dp.length; i++) {
+        int[] dp = new int[n + 1];
+
+        for (int i = 1; i <= n; i++) {
 
             if (m > i)
                 dp[i] = 1;
@@ -29,14 +29,10 @@ public class tab_2 {
             else if (m == i)
                 dp[i] = 2;
 
-            else {
-
+            else
                 dp[i] = dp[i - 1] + dp[i - m];
-            }
         }
 
         return dp[n];
-
     }
-
 }

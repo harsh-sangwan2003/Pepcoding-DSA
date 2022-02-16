@@ -1,5 +1,5 @@
 //Time - O(n)
-//Spacee - O(n)
+//Space - O(1)
 
 import java.util.Scanner;
 
@@ -11,6 +11,7 @@ public class paint_house {
         int n = scn.nextInt();
 
         int[][] arr = new int[n][3];
+
         for (int i = 0; i < n; i++) {
 
             for (int j = 0; j < 3; j++) {
@@ -19,45 +20,23 @@ public class paint_house {
             }
         }
 
-        int res = paintHouse(arr);
+        int res = minCost(arr);
         System.out.println(res);
 
         scn.close();
     }
 
-    public static int paintHouse(int[][] arr) {
+    public static int minCost(int[][] arr) {
 
-        int n = arr.length;
-        int m = 3;
+        for (int i = 1; i < arr.length; i++) {
 
-        int[][] dp = new int[n][m];
-
-        for (int i = 0; i < n; i++) {
-
-            for (int j = 0; j < m; j++) {
-
-                if (i == 0)
-                    dp[i][j] = arr[i][j];
-
-                else {
-
-                    if (j == 0)
-                        dp[i][j] = arr[i][j] + Math.min(dp[i - 1][1], dp[i - 1][2]);
-
-                    else if (j == 1)
-                        dp[i][j] = arr[i][j] + Math.min(dp[i - 1][0], dp[i - 1][2]);
-
-                    else
-                        dp[i][j] = arr[i][j] + Math.min(dp[i - 1][0], dp[i - 1][1]);
-                }
-            }
+            arr[i][0] += Math.min(arr[i - 1][1], arr[i - 1][2]);
+            arr[i][1] += Math.min(arr[i - 1][0], arr[i - 1][2]);
+            arr[i][2] += Math.min(arr[i - 1][0], arr[i - 1][1]);
         }
 
-        int min = Integer.MAX_VALUE;
+        int n = arr.length - 1;
 
-        for (int c = 0; c < 3; c++)
-            min = Math.min(dp[n - 1][c], min);
-
-        return min;
+        return Math.min(arr[n][0], Math.min(arr[n][1], arr[n][2]));
     }
 }

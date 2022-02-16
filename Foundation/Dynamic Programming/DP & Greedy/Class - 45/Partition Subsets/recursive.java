@@ -7,16 +7,17 @@ public class recursive {
 
     public static long partitionKSubset(int n, int k) {
         // write your code here
-        if (n < k || n == 0 || k == 0)
-            return 0L;
 
-        else if (n == k)
-            return 1L;
+        if (n < k)
+            return 0;
 
-        long diff = partitionKSubset(n - 1, k - 1);
-        long pair = partitionKSubset(n - 1, k);
+        else if (k == 1 || n == k)
+            return 1;
 
-        return diff + k * pair;
+        long x = partitionKSubset(n - 1, k - 1);
+        long y = partitionKSubset(n - 1, k);
+
+        return (long) (x + y * k);
     }
 
     public static void main(String[] args) throws Exception {

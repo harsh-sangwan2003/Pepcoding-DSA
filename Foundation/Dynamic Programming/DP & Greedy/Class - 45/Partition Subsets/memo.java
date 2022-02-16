@@ -1,25 +1,23 @@
-//Time - O(2^n)
-//Space - O(n)
+//Time - O(n*k)
+//Space - O(n*k)
 
 import java.util.Scanner;
 
-public class memoised {
+public class memo {
 
     public static long partitionKSubset(int n, int k, long[][] dp) {
         // write your code here
-        if (n < k || n == 0 || k == 0)
-            return 0L;
 
-        else if (n == k)
-            return dp[n][k] = 1L;
+        if (n < k)
+            return dp[n][k] = 0;
 
-        if (dp[n][k] != 0)
-            return dp[n][k];
+        else if (k == 1 || n == k)
+            return dp[n][k] = 1;
 
-        long diff = partitionKSubset(n - 1, k - 1, dp);
-        long pair = partitionKSubset(n - 1, k, dp);
+        long x = partitionKSubset(n - 1, k - 1, dp);
+        long y = partitionKSubset(n - 1, k, dp);
 
-        return dp[n][k] = diff + k * pair;
+        return dp[n][k] = (long) (x + y * k);
     }
 
     public static void main(String[] args) throws Exception {

@@ -8,6 +8,7 @@ public class count_ABC {
     public static void main(String[] args) throws Exception {
 
         Scanner scn = new Scanner(System.in);
+
         String str = scn.nextLine();
 
         int res = countSeq(str);
@@ -32,7 +33,7 @@ public class count_ABC {
             else if (ch == 'b')
                 ab = 2 * ab + a;
 
-            else
+            else if (ch == 'c')
                 abc = 2 * abc + ab;
         }
 

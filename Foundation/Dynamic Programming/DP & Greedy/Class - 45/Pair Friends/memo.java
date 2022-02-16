@@ -3,7 +3,7 @@
 
 import java.util.Scanner;
 
-public class tab_2 {
+public class memo {
 
     public static void main(String[] args) throws Exception {
         // write your code here
@@ -20,15 +20,13 @@ public class tab_2 {
 
     public static int pairFriends(int n, int[] dp) {
 
-        dp[1] = 1;
-        dp[2] = 2;
+        if (n <= 2)
+            return dp[n] = n;
 
-        for (int i = 3; i < dp.length; i++) {
+        if (dp[n] != 0)
+            return dp[n];
 
-            dp[i] = dp[i - 1] + (i - 1) * dp[i - 2];
-        }
-
-        return dp[n];
+        return dp[n] = pairFriends(n - 1, dp) + (n - 1) * pairFriends(n - 2, dp);
     }
 
 }

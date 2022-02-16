@@ -1,5 +1,5 @@
-// Time - O(n)
-// Space - O(1)
+//TIme - O(n)
+//Space - O(1)
 
 import java.util.Scanner;
 
@@ -11,23 +11,22 @@ public class paint_fence {
         int n = scn.nextInt();
         int k = scn.nextInt();
 
-        int res = paintFence(n, k);
+        long res = countWays(n, k);
         System.out.println(res);
 
         scn.close();
     }
 
-    public static int paintFence(int n, int k) {
+    public static long countWays(int n, int k) {
 
-        int same = k;
-        int diff = k * (k - 1);
-        int total = same + diff;
+        long same = k;
+        long diff = k * (k - 1);
+        long total = same + diff;
 
         for (int i = 3; i <= n; i++) {
 
             same = diff;
             diff = total * (k - 1);
-
             total = same + diff;
         }
 
