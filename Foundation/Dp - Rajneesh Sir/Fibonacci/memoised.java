@@ -3,7 +3,7 @@
 
 import java.util.Scanner;
 
-public class memoisation {
+public class memoised {
 
     public static int fibo(int n, int[] dp) {
 
