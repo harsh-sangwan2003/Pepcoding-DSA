@@ -2,40 +2,42 @@
 //Space - O(n)
 
 import java.util.Scanner;
+import java.util.HashMap;
 
-public class highest_freq_char_2 {
+public class highest_freq_ch2 {
 
     public static void main(String[] args) throws Exception {
         // write your code here
         Scanner scn = new Scanner(System.in);
         String str = scn.nextLine();
 
-        int[] freq = new int[26];
+        HashMap<Character, Integer> map = new HashMap<>();
 
         for (int i = 0; i < str.length(); i++) {
 
             char ch = str.charAt(i);
-            int idx = ch - 'a';
 
-            freq[idx]++;
+            map.put(ch, map.getOrDefault(ch, 1) + 1);
         }
 
-        int maxCount = -1;
         char ans = 'a';
+        int max_f = -1;
 
-        for (int i = 0; i < freq.length; i++) {
+        for (char s : map.keySet()) {
 
-            int count = freq[i];
+            int freq = map.get(s);
 
-            if (count > maxCount) {
+            if (freq > max_f) {
 
-                maxCount = count;
-                ans = (char) ('a' + i);
+                max_f = freq;
+                ans = s;
             }
         }
 
         System.out.println(ans);
+
         scn.close();
+
     }
 
 }

@@ -1,95 +1,83 @@
 //Time - O(nlog(n))
-//Space - O(k)
+//Space - O(Height of tree)
 
-import java.util.ArrayList;
 import java.util.PriorityQueue;
+import java.util.ArrayList;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-
 public class merge_k_sorted_lists {
 
-   public static class Triplet implements Comparable<Triplet>{
+    public static class Triplet implements Comparable<Triplet> {
 
-      int li;
-      int di;
-      int data;
+        int li;
+        int di;
+        int data;
 
-      Triplet(){
+        Triplet() {
 
+        }
 
-      }
+        public Triplet(int li, int di, int data) {
 
-      public Triplet(int li, int di, int data){
+            this.li = li;
+            this.di = di;
+            this.data = data;
+        }
 
-         this.li = li;
-         this.di = di;
-         this.data = data;
-      }
+        public int compareTo(Triplet o) {
+            return this.data - o.data;
+        }
+    }
 
-      public int compareTo(Triplet o){
+    public static ArrayList<Integer> mergeKSortedLists(ArrayList<ArrayList<Integer>> lists) {
+        ArrayList<Integer> rv = new ArrayList<>();
 
-         return this.data - o.data;
-      }
-   }
+        // write your code here
+        PriorityQueue<Triplet> pq = new PriorityQueue<>();
 
-   public static ArrayList<Integer> mergeKSortedLists(ArrayList<ArrayList<Integer>> lists){
-      ArrayList<Integer> rv = new ArrayList<>();
+        for (int i = 0; i < lists.size(); i++)
+            pq.add(new Triplet(i, 0, lists.get(i).get(0)));
 
-      // write your code here
-      PriorityQueue<Triplet> pq = new PriorityQueue<>();
+        while (pq.size() != 0) {
 
-      for(int i=0; i<lists.size(); i++){
+            Triplet tp = pq.remove();
+            rv.add(tp.data);
 
-         pq.add(new Triplet(i,0,lists.get(i).get(0)));
-      }
+            int newLi = tp.li;
+            int newDi = tp.di + 1;
 
-      while(pq.size()>0){
+            if (newDi < lists.get(newLi).size()) {
 
-         Triplet tp = pq.remove();
-         rv.add(tp.data);
+                pq.add(new Triplet(newLi, newDi, lists.get(newLi).get(newDi)));
+            }
+        }
 
-         int newDi = tp.di+1;
-         
-         if(newDi<lists.get(tp.li).size()){
+        return rv;
+    }
 
-            pq.add(new Triplet(tp.li,newDi,lists.get(tp.li).get(newDi)));
-         }
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int k = Integer.parseInt(br.readLine());
+        ArrayList<ArrayList<Integer>> lists = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
+            ArrayList<Integer> list = new ArrayList<>();
 
-      }
+            int n = Integer.parseInt(br.readLine());
+            String[] elements = br.readLine().split(" ");
+            for (int j = 0; j < n; j++) {
+                list.add(Integer.parseInt(elements[j]));
+            }
 
-      return rv;
-   }
+            lists.add(list);
+        }
 
-   public static void main(String[] args) throws Exception {
-      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-      int k = Integer.parseInt(br.readLine());
-
-      ArrayList<ArrayList<Integer>> lists = new ArrayList<>();
-
-      for(int i = 0; i < k; i++){
-         ArrayList<Integer> list = new ArrayList<>();
-
-         int n = Integer.parseInt(br.readLine());
-         String[] elements = br.readLine().split(" ");
-         for(int j = 0; j < n; j++){
-            list.add(Integer.parseInt(elements[j]));
-         }
-
-         lists.add(list);
-      }
-
-      ArrayList<Integer> mlist = mergeKSortedLists(lists);
-
-      for(int val: mlist){
-         System.out.print(val + " ");
-      }
-
-      System.out.println();
-
-      br.close();
-   }
+        ArrayList<Integer> mlist = mergeKSortedLists(lists);
+        for (int val : mlist) {
+            System.out.print(val + " ");
+        }
+        System.out.println();
+    }
 
 }

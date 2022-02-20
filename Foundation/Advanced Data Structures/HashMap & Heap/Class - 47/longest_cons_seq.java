@@ -1,4 +1,4 @@
-//TIme - O(n)
+//Time - O(n)
 //Space - O(n)
 
 import java.util.Scanner;
@@ -17,35 +17,33 @@ public class longest_cons_seq {
 
         HashMap<Integer, Boolean> map = new HashMap<>();
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int val : arr)
+            map.put(val, true);
 
-            if (map.containsKey(arr[i] - 1))
-                map.put(arr[i], false);
+        for (int val : arr) {
 
-            else
-                map.put(arr[i], true);
+            if (map.containsKey(val - 1))
+                map.put(val, false);
         }
 
-        int max_len = 0;
         int st = 0;
+        int max_len = 0;
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int val : arr) {
 
-            boolean flag = map.get(arr[i]);
-            int len = 1;
+            boolean flag = map.get(val);
 
             if (flag) {
 
-                while (map.containsKey(arr[i] + len)) {
+                int len = 1;
 
+                while (map.containsKey(val + len))
                     len++;
+
+                if (len > max_len) {
+                    st = val;
+                    max_len = len;
                 }
-            }
-
-            if (len > max_len) {
-
-                max_len = len;
-                st = arr[i];
             }
         }
 

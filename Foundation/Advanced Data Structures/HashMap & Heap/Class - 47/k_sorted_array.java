@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class k_largest_ele {
+public class k_sorted_array {
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,27 +22,17 @@ public class k_largest_ele {
 
         PriorityQueue<Integer> pq = new PriorityQueue<>();
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i <= k; i++)
+            pq.add(arr[i]);
 
-            if (i < k)
-                pq.add(arr[i]);
-
-            else {
-
-                if (arr[i] > pq.peek()) {
-
-                    pq.remove();
-                    pq.add(arr[i]);
-                }
-            }
-        }
-
-        while (pq.size() > 0) {
+        for (int i = k + 1; i < arr.length; i++) {
 
             System.out.println(pq.remove());
+            pq.add(arr[i]);
         }
 
-        br.close();
+        while (pq.size() != 0)
+            System.out.println(pq.remove());
     }
 
 }
