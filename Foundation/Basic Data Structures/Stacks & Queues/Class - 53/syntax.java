@@ -20,8 +20,7 @@ public class syntax {
          */
 
         // Stack underflow ->
-        // System.out.println(st.peek());
+        System.out.println(st.peek());
 
-        
     }
 }
