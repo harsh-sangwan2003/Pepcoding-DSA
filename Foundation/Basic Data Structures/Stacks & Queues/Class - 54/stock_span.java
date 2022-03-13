@@ -24,30 +24,32 @@ public class stock_span {
 
         int[] span = solve(a);
         display(span);
+
+        br.close();
     }
 
     public static int[] solve(int[] arr) {
         // solve
+        int[] span = new int[arr.length];
         Stack<Integer> st = new Stack<>();
-        int[] ngel = new int[arr.length];
-        ngel[0] = 1;
+        span[0] = 1;
         st.push(0);
 
         for (int i = 1; i < arr.length; i++) {
 
-            while (st.size() > 0 && arr[i] >= arr[st.peek()])
+            while (st.size() != 0 && arr[i] >= arr[st.peek()])
                 st.pop();
 
             if (st.size() == 0)
-                ngel[i] = i + 1;
+                span[i] = i + 1;
 
             else
-                ngel[i] = i - st.peek();
+                span[i] = i - st.peek();
 
             st.push(i);
         }
 
-        return ngel;
+        return span;
     }
 
 }

@@ -3,8 +3,7 @@ import java.io.InputStreamReader;
 
 import java.util.Stack;
 
-public class next_greater_ele {
-
+public class nsel {
     public static void display(int[] a) {
         StringBuilder sb = new StringBuilder();
 
@@ -23,34 +22,34 @@ public class next_greater_ele {
             a[i] = Integer.parseInt(br.readLine());
         }
 
-        int[] nge = solve(a);
-        display(nge);
+        int[] ngl = solve(a);
+        display(ngl);
 
         br.close();
     }
 
     public static int[] solve(int[] arr) {
         // solve
+        int[] nse = new int[arr.length];
+        nse[0] = -1;
         Stack<Integer> st = new Stack<>();
-        int[] nge = new int[arr.length];
-        nge[arr.length - 1] = -1;
-        st.push(arr.length - 1);
+        st.push(0);
 
-        for (int i = arr.length - 2; i >= 0; i--) {
+        for (int i = 1; i < arr.length; i++) {
 
-            while (st.size() > 0 && arr[i] >= arr[st.peek()])
+            while (st.size() != 0 && arr[i] <= arr[st.peek()])
                 st.pop();
 
             if (st.size() == 0)
-                nge[i] = -1;
+                nse[i] = -1;
 
             else
-                nge[i] = arr[st.peek()];
+                nse[i] = arr[st.peek()];
 
             st.push(i);
         }
 
-        return nge;
+        return nse;
     }
 
 }
