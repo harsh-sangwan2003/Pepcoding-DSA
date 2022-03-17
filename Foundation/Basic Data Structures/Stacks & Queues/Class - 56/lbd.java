@@ -6,9 +6,7 @@ public class lbd {
 
         int[][] arr = { { 1, 3 }, { 6, 10 }, { -3, 13 }, { 5, 20 } };
 
-        Arrays.sort(arr, (a, b) -> {
-            return a[0] - b[0];
-        });
+        Arrays.sort(arr, (a, b) -> a[0] - b[0]);
 
         for (int[] d : arr) {
 
