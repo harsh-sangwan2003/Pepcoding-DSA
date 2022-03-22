@@ -13,11 +13,11 @@ public class autoboxing_wrapperClass {
         for (Integer val : brr)
             System.out.print(val + " ");
 
-        Integer i = new Integer(8);
+        // Integer i = new Integer(8);
 
         System.out.println();
 
-        System.out.println(i);
+        // System.out.println(i);
 
     }
 }
