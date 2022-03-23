@@ -8,11 +8,9 @@ public class display {
         Node left;
         Node right;
 
-        Node(int data, Node left, Node right) {
+        Node(int data) {
 
             this.data = data;
-            this.left = left;
-            this.right = right;
         }
 
     }
@@ -32,65 +30,54 @@ public class display {
 
     public static Node constructTree(Integer[] arr) {
 
-        Node rtp = new Node(arr[0], null, null);
+        Node root = new Node(arr[0]);
         Stack<Pair> st = new Stack<>();
-        st.push(new Pair(rtp, 1));
+        st.push(new Pair(root, 1));
 
-        int idx = 0;
+        int idx = 1;
 
-        while (st.size() != 0 && idx < arr.length) {
+        while (st.size() != 0) {
 
-            Pair p = st.peek();
+            Pair top = st.peek();
 
-            if (p.state == 1) {
+            if (top.state == 1) {
 
-                idx++;
                 if (arr[idx] != null) {
 
-                    Node tmp = new Node(arr[idx], null, null);
-                    p.node.left = tmp;
+                    Node left = new Node(arr[idx]);
+                    top.node.left = left;
 
-                    Pair tp = new Pair(tmp, 1);
-                    st.push(tp);
+                    Pair tmp = new Pair(left, 1);
+                    st.push(tmp);
                 }
 
-                else {
-
-                    p.node.left = null;
-                }
-
-                p.state++;
+                top.state++;
+                idx++;
             }
 
-            else if (p.state == 2) {
-
-                idx++;
+            else if (top.state == 2) {
 
                 if (arr[idx] != null) {
 
-                    Node tmp = new Node(arr[idx], null, null);
-                    p.node.right = tmp;
+                    Node right = new Node(arr[idx]);
+                    top.node.right = right;
 
-                    Pair tp = new Pair(tmp, 1);
-                    st.push(tp);
+                    Pair tmp = new Pair(right, 1);
+                    st.push(tmp);
                 }
 
-                else {
-
-                    p.node.right = null;
-                }
-
-                p.state++;
+                top.state++;
+                idx++;
             }
 
             else {
 
-                idx++;
                 st.pop();
             }
         }
 
-        return rtp;
+        return root;
+
     }
 
     public static void displayTree(Node node) {
@@ -101,7 +88,7 @@ public class display {
         String str = "";
 
         str += node.left == null ? "." : node.left.data + "";
-        str += "->" + node.data + "<-" + "";
+        str += " -> " + node.data + " <- " + "";
         str += node.right == null ? "." : node.right.data + "";
 
         System.out.println(str);
