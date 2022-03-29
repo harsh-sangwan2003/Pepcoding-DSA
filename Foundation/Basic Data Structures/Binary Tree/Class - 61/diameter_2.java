@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 
 import java.util.Stack;
 
-public class diameter {
+public class diameter_2 {
     public static class Node {
         int data;
         Node left;
@@ -93,21 +93,41 @@ public class diameter {
         return th;
     }
 
-    public static int diameter1(Node root) {
-        // write your code here
+    public static class Pair2 {
+
+        int height;
+        int dia;
+
+        Pair2() {
+
+        }
+
+        Pair2(int height, int dia) {
+
+            this.height = height;
+            this.dia = dia;
+        }
+
+    }
+
+    public static Pair2 diameter(Node root) {
+
         if (root == null)
-            return 0;
+            return new Pair2(-1, 0);
 
-        int ld = diameter1(root.left);
-        int rd = diameter1(root.right);
+        Pair2 lp = diameter(root.left);
+        Pair2 rp = diameter(root.right);
 
-        int lh = height(root.left);
-        int rh = height(root.right);
+        Pair2 mp = new Pair2();
+        mp.height = Math.max(lp.height, rp.height) + 1;
+        mp.dia = Math.max(lp.height + rp.height + 2, Math.max(lp.dia, rp.dia));
 
-        int maxd = Math.max(ld, rd);
-        maxd = Math.max(maxd, lh + rh + 2);
+        return mp;
+    }
 
-        return maxd;
+    public static int diameter1(Node node) {
+        // write your code here
+        return diameter(node).dia;
     }
 
     public static void main(String[] args) throws Exception {
