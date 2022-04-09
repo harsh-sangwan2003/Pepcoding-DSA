@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.ArrayList;
 
-public class size {
+public class pre_post_traversals {
     private static class Node {
         int data;
         ArrayList<Node> children = new ArrayList<>();
@@ -48,14 +48,58 @@ public class size {
     }
 
     public static int size(Node node) {
+        int s = 0;
+
+        for (Node child : node.children) {
+            s += size(child);
+        }
+        s += 1;
+
+        return s;
+    }
+
+    public static int max(Node node) {
+        int m = Integer.MIN_VALUE;
+
+        for (Node child : node.children) {
+            int cm = max(child);
+            m = Math.max(m, cm);
+        }
+        m = Math.max(m, node.data);
+
+        return m;
+    }
+
+    public static int height(Node node) {
+        int h = -1;
+
+        for (Node child : node.children) {
+            int ch = height(child);
+            h = Math.max(h, ch);
+        }
+        h += 1;
+
+        return h;
+    }
+
+    public static void traversals(Node node) {
         // write your code here
+        if (node == null)
+            return;
 
-        int childSize = 0;
+        System.out.println("Node Pre " + node.data);
 
-        for (Node child : node.children)
-            childSize += size(child);
+        for (Node child : node.children) {
 
-        return childSize + 1;
+            System.out.println("Edge Pre " + node.data + "--" + child.data);
+
+            traversals(child);
+
+            System.out.println("Edge Post " + node.data + "--" + child.data);
+        }
+
+        System.out.println("Node Post " + node.data);
+
     }
 
     public static void main(String[] args) throws Exception {
@@ -68,9 +112,7 @@ public class size {
         }
 
         Node root = construct(arr);
-        int sz = size(root);
-        System.out.println(sz);
-        // display(root);
+        traversals(root);
     }
 
 }
