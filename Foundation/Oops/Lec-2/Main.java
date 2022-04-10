@@ -22,10 +22,12 @@ public class Main {
             return sb.toString();
         }
 
+        //Default Constructor
         Phone() {
 
         }
 
+        //Parameterized Constructor
         Phone(String companyName, String model, String color, int ram, int storage, int batteryPower) {
 
             this.companyName = companyName;

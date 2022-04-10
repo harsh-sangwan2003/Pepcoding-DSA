@@ -26,6 +26,7 @@ public class Main {
 
     public static void test1() {
 
+        //Object - 1
         Phone p1 = new Phone();
         p1.companyName = "One Plus";
         p1.model = "9R 5G";
@@ -34,6 +35,7 @@ public class Main {
         p1.storage = 128;
         p1.batteryPower = 4500;
 
+        //Object - 2
         Phone p2 = new Phone();
         p2.companyName = "One Plus";
         p2.model = "9R 5G";
@@ -42,6 +44,7 @@ public class Main {
         p2.storage = 256;
         p2.batteryPower = 4500;
 
+        //Object - 3
         Phone p3 = new Phone();
         p3.companyName = "One Plus";
         p3.model = "9Pro 5G";
