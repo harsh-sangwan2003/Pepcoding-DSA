@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class count_islands {
+public class count_islands2 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -18,15 +18,14 @@ public class count_islands {
 
         // write your code here
         int count = 0;
-        boolean[][] visit = new boolean[arr.length][arr[0].length];
 
         for (int i = 0; i < arr.length; i++) {
 
             for (int j = 0; j < arr[0].length; j++) {
 
-                if (arr[i][j] == 0 && !visit[i][j]) {
+                if (arr[i][j] == 0) {
 
-                    dfs(arr, i, j, visit);
+                    dfs(arr, i, j);
                     count++;
                 }
             }
@@ -35,17 +34,17 @@ public class count_islands {
         System.out.println(count);
     }
 
-    public static void dfs(int[][] arr, int r, int c, boolean[][] visit) {
+    public static void dfs(int[][] arr, int r, int c) {
 
-        if (r < 0 || c < 0 || r >= arr.length || c >= arr[0].length || arr[r][c] == 1 || visit[r][c])
+        if (r < 0 || c < 0 || r >= arr.length || c >= arr[0].length || arr[r][c] == 1)
             return;
 
-        visit[r][c] = true;
+        arr[r][c] = 1;
 
-        dfs(arr, r - 1, c, visit);
-        dfs(arr, r, c - 1, visit);
-        dfs(arr, r + 1, c, visit);
-        dfs(arr, r, c + 1, visit);
+        dfs(arr, r - 1, c);
+        dfs(arr, r, c - 1);
+        dfs(arr, r + 1, c);
+        dfs(arr, r, c + 1);
     }
 
 }
