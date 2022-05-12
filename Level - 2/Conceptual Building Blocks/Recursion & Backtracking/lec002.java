@@ -73,8 +73,11 @@ public class lec002 {
 
         int count = 0;
 
-        count += coinChangeCombinationsSingle(coins, idx + 1, tar - coins[idx], asf + coins[idx]);
-        count += coinChangeCombinationsSingle(coins, idx + 1, tar, asf);
+        for (int i = idx; i < coins.length; i++) {
+
+            if (tar - coins[i] >= 0)
+                count += coinChangeCombinationsSingle(coins, idx + 1, tar - coins[i], asf + coins[i]);
+        }
 
         return count;
     }
