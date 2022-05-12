@@ -1,4 +1,4 @@
-public class Main {
+public class lec001 {
 
     public static boolean inRange(int i, int j, int n, int m) {
 
