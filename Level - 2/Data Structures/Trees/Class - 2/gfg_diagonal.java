@@ -124,6 +124,35 @@ class GfG {
  * }
  */
 class Tree {
+
+    public ArrayList<Integer> diagonal2(Node root) {
+        if (root == null)
+            return new ArrayList<>();
+        // add your code here.
+
+        Queue<Node> q = new LinkedList<>();
+        ArrayList<Integer> res = new ArrayList<>();
+
+        q.add(root);
+
+        while (q.size() != 0) {
+
+            Node rm = q.remove();
+
+            while (rm != null) {
+
+                res.add(rm.data);
+
+                if (rm.left != null)
+                    q.add(rm.left);
+
+                rm = rm.right;
+            }
+        }
+
+        return res;
+    }
+    
     static int maxd;
 
     public ArrayList<Integer> diagonal(Node root) {
