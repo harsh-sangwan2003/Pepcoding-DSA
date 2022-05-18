@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class lec001_levelOrder {
+public class levelOrder {
     public static class Node {
         int data;
         Node left;
@@ -79,6 +79,7 @@ public class lec001_levelOrder {
         display(node.right);
     }
 
+    //LOLW - count
     public static void levelOrder1(Node node) {
         // write your code here
         Queue<Node> q = new LinkedList<>();
@@ -107,6 +108,7 @@ public class lec001_levelOrder {
 
     }
 
+    //LOLW - null
     public static void levelOrder2(Node node) {
         // write your code here
         Queue<Node> q = new LinkedList<>();
