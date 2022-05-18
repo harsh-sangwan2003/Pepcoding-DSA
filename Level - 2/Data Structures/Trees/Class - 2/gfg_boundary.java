@@ -145,6 +145,7 @@ class Solution {
         leaves(root.right, list);
     }
 
+    // O(n)
     ArrayList<Integer> boundary(Node node) {
         ArrayList<Integer> list = new ArrayList<>();
 

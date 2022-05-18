@@ -152,9 +152,10 @@ class Tree {
 
         return res;
     }
-    
+
     static int maxd;
 
+    // O(n)
     public ArrayList<Integer> diagonal(Node root) {
         if (root == null)
             return new ArrayList<>();
